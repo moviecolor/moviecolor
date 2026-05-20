@@ -126,13 +126,13 @@
 <table align="center">
   <tr>
     <td align="left"><strong>The Long Walk</strong><br /><sub>DIT — 2025</sub></td>
-    <td align="left"><strong>The Spencer Sisters</strong> (10 eps)<br /><sub>DIT — 2023</sub></td>
-    <td align="left"><strong>Violent Night</strong><br /><sub>Camera — 2022</sub></td>
+    <td align="left"><strong>Tales from the Loop</strong> (8 eps)<br /><sub>DIT — 2020</sub></td>
+    <td align="left"><strong>NOBODY</strong><br /><sub>DIT — 2021</sub></td>
   </tr>
   <tr>
-    <td align="left"><strong>The Ice Road</strong><br /><sub>Camera — 2021</sub></td>
-    <td align="left"><strong>The Grudge</strong><br /><sub>DIT — 2020</sub></td>
-    <td align="left"><strong>Storming Juno</strong><br /><sub>DIT — 2010</sub></td>
+    <td align="left"><strong>Fractured</strong><br /><sub>DIT — 2019</sub></td>
+    <td align="left"><strong>The Grudge</strong><br /><sub>DIT — 2019</sub></td>
+    <td align="left"><strong>Violent Night</strong><br /><sub>DIT — 2022</sub></td>
   </tr>
 </table>
 
