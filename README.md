@@ -79,7 +79,8 @@
   <br />
   <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md" />
 </p>
-
+[![Coursera](https://shields.io)](https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c)
+- 🎓 **[Name of Course]** – Issued by Coursera | [Verify Certificate](https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c)
 ---
 
 <h2 align="center">🚀 What I Do</h2>
