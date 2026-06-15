@@ -10,7 +10,7 @@
 
 <div align="center">
   <h3>📜 Coursera Credentials</h3>
-  <br /><br />
+  <br />
 
 <a href="https://coursera.org/share/01b5ad399a9f9e5441f36e47927b5fd2"><img src="https://img.shields.io/badge/GenAI_for_Software_Dev-IBM-052FAD?style=flat-square&logo=ibm&logoColor=white" /></a>&nbsp;
 <a href="https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c"><img src="https://img.shields.io/badge/Intro_GenAI_Software_Dev-DeepLearning.AI-22AA5E?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
