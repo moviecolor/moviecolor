@@ -7,6 +7,92 @@
 <p align="center">🧪 Proprietary IP: Air-Gapped Local AI Production Pipeline</p>
 
 ---
+
+<div align="center">
+  <h3>📜 Coursera Credentials</h3>
+  <br /><br />
+
+<a href="https://coursera.org/share/01b5ad399a9f9e5441f36e47927b5fd2"><img src="https://img.shields.io/badge/GenAI_for_Software_Dev-IBM-052FAD?style=flat-square&logo=ibm&logoColor=white" /></a>&nbsp;
+<a href="https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c"><img src="https://img.shields.io/badge/Intro_GenAI_Software_Dev-DeepLearning.AI-22AA5E?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
+<a href="https://coursera.org/share/fc1a1ee3e16dbe1d5f7e236951c8d389"><img src="https://img.shields.io/badge/Prompt_Engineering_ChatGPT-Vanderbilt-FF6B35?style=flat-square&logo=coursera&logoColor=white" /></a>
+</div>
+
+<p align="center">
+  <a href="https://moviecolor.github.io">
+    <img src="https://custom-icon-badges.demolab.com/badge/-PORTFOLIO-00f0ff?style=for-the-badge&logo=rocket&logoColor=black" />
+  </a>
+  <a href="https://www.linkedin.com/in/ryan-w-wuckert-58121034/">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://www.imdb.com/name/nm2344474/">
+    <img src="https://img.shields.io/badge/IMDb-F5C518?style=for-the-badge&logo=imdb&logoColor=black" />
+  </a>
+  <a href="mailto:your@email.com">
+    <img src="https://img.shields.io/badge/Contact-FF6B35?style=for-the-badge&logo=maildotru&logoColor=white" />
+  </a>
+</p>
+
+---
+<h2 align="center">🛠️ AI Workflow Stack</h2>
+
+<p align="center">
+  <!-- AI Image/Video -->
+  <img src="https://img.shields.io/badge/ComfyUI-FF6B35?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/Runway-000000?style=flat-square&logo=runway&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kling-8A2BE2?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/Midjourney-000000?style=flat-square&logo=minecraft&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sana-00BFFF?style=flat-square&logoColor=white" />
+  <br />
+  <img src="https://img.shields.io/badge/FLUX-8A2BE2?style=flat-square&logo=proton&logoColor=white" />
+  <img src="https://img.shields.io/badge/Hunyuan-FF0000?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/WAN_2.2-00FF00?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/LTX_Video-4169E1?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/Z--Image_Turbo-FF4500?style=flat-square&logoColor=white" />
+  <br />
+  <!-- Tools -->
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/DaVinci_Resolve-000000?style=flat-square&logo=davinciresolve&logoColor=white" />
+  <img src="https://img.shields.io/badge/Live_Grade-00BFAE?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/LLMs-FF6B35?style=flat-square&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+  <br />
+  <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md" />
+</p>
+
+---
+<h2 align="center">🎥 Selected Film Credits</h2>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Universal_Pictures-000000?style=for-the-badge&logo=universal&logoColor=white" />
+  <img src="https://img.shields.io/badge/Netflix-E50914?style=for-the-badge&logo=netflix&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon_Studios-FF9900?style=for-the-badge&logo=amazonprime&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sony_Pictures-0000FF?style=for-the-badge&logo=sony&logoColor=white" />
+  <img src="https://img.shields.io/badge/NBC-0080C6?style=for-the-badge&logo=nbc&logoColor=white" />
+  <img src="https://img.shields.io/badge/CBS-000000?style=for-the-badge&logo=cbs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Technicolor-FC4C02?style=for-the-badge&logoColor=white" />
+</p>
+
+<table align="center">
+  <tr>
+    <td align="left"><strong>The Long Walk</strong><br /><sub>DIT — 2025</sub></td>
+    <td align="left"><strong>Tales from the Loop</strong> (8 eps)<br /><sub>DIT — 2020</sub></td>
+    <td align="left"><strong>NOBODY</strong><br /><sub>DIT — 2021</sub></td>
+  </tr>
+  <tr>
+    <td align="left"><strong>Fractured</strong><br /><sub>DIT — 2019</sub></td>
+    <td align="left"><strong>The Grudge</strong><br /><sub>DIT — 2019</sub></td>
+    <td align="left"><strong>Violent Night</strong><br /><sub>DIT — 2022</sub></td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://www.imdb.com/name/nm2344474/">
+    <img src="https://img.shields.io/badge/Full_Filmography_on_IMDb-F5C518?style=for-the-badge&logo=imdb&logoColor=black" />
+  </a>
+</p>
+
+---
 ## 🧪 Proprietary IP: Air-Gapped Local AI Production Pipeline
 
 To ensure absolute data compliance for enterprise studios operating under strict NDAs, I engineer **100% offline, air-gapped automation pipelines** that process high-value visual assets locally without internet or cloud-API dependencies.
