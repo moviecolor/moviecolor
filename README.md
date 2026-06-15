@@ -58,10 +58,10 @@
   <img src="https://img.shields.io/badge/LLMs-FF6B35?style=flat-square&logo=openai&logoColor=white" />
   <img src="https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenCode-656363?style=flat-square&logo=opencode&logoColor=white" />
   <br />
   <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md" />
-  <img src="https://img.shields.io/badge/OpenCode-656363?style=flat-square&logo=opencode&logoColor=white" />
-  <img src="https://img.shields.io/badge/Ghostty-60A5FA?style=flat-square&logo=ghostty&logoColor=white" />
+  <img src="https://kazuito.gallerycdn.vsassets.io/extensions/kazuito/ghostty/1.0.3/1774192215818/Microsoft.VisualStudio.Services.Icons.Default" width="48" height="48" />
 </p>
 
 ---
