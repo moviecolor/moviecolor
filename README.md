@@ -45,9 +45,11 @@
   <br />
   <img src="https://img.shields.io/badge/FLUX-8A2BE2?style=flat-square&logo=proton&logoColor=white" />
   <img src="https://img.shields.io/badge/Hunyuan-FF0000?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/WAN_2.2-00FF00?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/WAN_2.2-00B300?style=flat-square&logoColor=white" />
   <img src="https://img.shields.io/badge/LTX_Video-4169E1?style=flat-square&logoColor=white" />
   <img src="https://img.shields.io/badge/Z--Image_Turbo-FF4500?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/SULPHUR2-FF6600?style=flat-square&logoColor=white" />
+  <img src="https://img.shields.io/badge/SCAIL2-4B0082?style=flat-square&logoColor=white" />
   <br />
   <!-- Tools -->
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
@@ -58,6 +60,8 @@
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
   <br />
   <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md" />
+  <img src="https://img.shields.io/badge/OpenCode-00F0FF?style=for-the-badge&logoColor=black" />
+  <img src="https://img.shields.io/badge/Ghosty-9933FF?style=for-the-badge&logoColor=white" />
 </p>
 
 ---
