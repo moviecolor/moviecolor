@@ -58,15 +58,14 @@ To ensure absolute data compliance for enterprise studios operating under strict
 | **RAM** | 96 GB DDR5 (2× 48 GB Corsair @ 4800 MHz, rated 6000 MHz) |
 | **GPU** | NVIDIA GeForce RTX 5090 — 32 GB GDDR7 (600 W, 2685 MHz core / 14001 MHz memory) |
 | **Storage** | 1.86 TB NVMe (OS + fast cache), 2.8 TB HDD (model storage), USB-C external SSD |
-| **Motherboard** | ASUS ROG MAXIMUS Z790 HERO (BIOS v3107) |
-| **OS** | Windows 11 IoT Enterprise LTSC (64-bit, build 26100) |
+| **OS** | Windows 11 IoT Enterprise LTSC (64-bit) |
 | **Software Stack** | Python 3.11.4, ComfyUI (local port 8188), Git, huggingface-cli |
-| **Network** | Intel I226-V 1 GbE — local-only IP (10.0.0.119), no external auth dependency |
+| **Network** | Air-gapped local LAN — zero external network dependency |
 | **Thermals** | GPU idle 34°C / 72 W — max 600 W under full load |
 
 **Key Air-Gap Notes:**
 - No cloud APIs required — all inference runs on the RTX 5090's 32 GB VRAM (with CPU offloading for larger models)
-- Local-only IP (10.x.x.x), zero external service dependency
+- Entirely local network — zero external service dependency
 - 96 GB DDR5 + 32 GB VRAM enables Llama-70B, FLUX, and Wan 2.2 to run comfortably with CPU offloading
 - 2.8 TB HDD for model storage, 1.86 TB NVMe for fast dataset/cache I/O
 
