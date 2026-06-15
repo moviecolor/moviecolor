@@ -88,8 +88,12 @@ ControlNets ──────────────────────�
 
 ### ⚡ Hardware Scale & Compute Performance
 
-- **Primary Workstation Node:** Powered by a local flagship **NVIDIA RTX 5090** processing block.
-- **VRAM Overhead Optimization:** Fully optimized to leverage 32 GB of high-bandwidth Blackwell-architecture VRAM, enabling sub-second local iterations, massive batch arrays, and ultra-high-resolution canvas generation entirely offline.
+| Workstation | Role | Specs |
+|------------|------|-------|
+| **Primary AI Node** | Air-gapped inference & pipeline automation | NVIDIA RTX 5090 (32 GB GDDR7), Intel i9-14900K, 96 GB DDR5, ComfyUI on local loop (`127.0.0.1:8188`) |
+| **Color & Post AI** | DaVinci Resolve grading, finishing, AI-assisted post | Apple Mac Studio M2 Ultra (128 GB unified RAM) — air-gappable on demand |
+
+- **VRAM Overhead Optimization:** The RTX 5090's 32 GB of Blackwell-architecture VRAM enables sub-second local iterations, massive batch arrays, and ultra-high-resolution canvas generation entirely offline.
 - **Zero-Trust Security Loop:** Hardcoded to execute on isolated local host loops (`http://127.0.0.1:8188`). Absolutely no telemetry data, client visual payloads, or proprietary training assets cross external network boundaries.
 
 <details>
