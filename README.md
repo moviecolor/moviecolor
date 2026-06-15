@@ -57,7 +57,9 @@ To ensure absolute data compliance for enterprise studios operating under strict
 | **CPU** | Intel Core i9-14900K — 24 cores (8P+16E) / 32 threads, boost up to 6.0 GHz |
 | **RAM** | 96 GB DDR5 (2× 48 GB Corsair @ 4800 MHz, rated 6000 MHz) |
 | **GPU** | NVIDIA GeForce RTX 5090 — 32 GB GDDR7 (600 W, 2685 MHz core / 14001 MHz memory) |
-| **Storage** | 1.86 TB NVMe (OS + fast cache), 2.8 TB HDD (model storage), USB-C external SSD |
+| **Storage (Internal)** | 1.86 TB NVMe (OS + fast cache), 2.8 TB HDD (model storage) |
+| **Storage (DIT RAIDs)** | 9 TB RAID 5 (archive), 32 TB RAID 0 (on-set acquisition) |
+| **Transport** | 5 × 6 TB NVMe RAID shuttle drives (secure footage transport) |
 | **OS** | Windows 11 IoT Enterprise LTSC (64-bit) |
 | **Software Stack** | Python 3.11.4, ComfyUI (local port 8188), Git, huggingface-cli |
 | **Network** | Air-gapped local LAN — zero external network dependency |
@@ -67,7 +69,8 @@ To ensure absolute data compliance for enterprise studios operating under strict
 - No cloud APIs required — all inference runs on the RTX 5090's 32 GB VRAM (with CPU offloading for larger models)
 - Entirely local network — zero external service dependency
 - 96 GB DDR5 + 32 GB VRAM enables Llama-70B, FLUX, and Wan 2.2 to run comfortably with CPU offloading
-- 2.8 TB HDD for model storage, 1.86 TB NVMe for fast dataset/cache I/O
+- 1.86 TB NVMe (OS + fast cache) + 2.8 TB HDD + 9 TB RAID 5 for model & archive storage
+- 32 TB RAID 0 for on-set acquisition, 5x 6 TB NVMe RAID shuttle drives for secure transport
 
 </details>
 
