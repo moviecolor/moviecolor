@@ -60,8 +60,8 @@
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
   <br />
   <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md" />
-  <img src="https://img.shields.io/badge/OpenCode-00F0FF?style=for-the-badge&logoColor=black" />
-  <img src="https://img.shields.io/badge/Ghosty-9933FF?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenCode-211E1E?style=for-the-badge&logo=opencode&logoColor=white" />
+  <img src="https://img.shields.io/badge/Ghostty-FF0090?style=for-the-badge&logo=ghostty&logoColor=white" />
 </p>
 
 ---
