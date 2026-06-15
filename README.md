@@ -59,9 +59,7 @@
   <img src="https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
   <br />
-  <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md" />
-  <img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/opencode.svg" width="48" height="48" style="background:#656363; padding:8px; border-radius:8px; filter:brightness(0) invert(1);" />
-  <img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/ghostty.svg" width="48" height="48" style="background:#60A5FA; padding:8px; border-radius:8px; filter:brightness(0) invert(1);" />
+  <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md,opencode,ghostty" />
 </p>
 
 ---
