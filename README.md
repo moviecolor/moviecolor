@@ -243,22 +243,9 @@ ControlNets ──────────────────────�
       <strong>B2B Consulting</strong><br />
       <sub>Workflow design, technical advising, remote team integration</sub>
     </td>
-  </tr>
+                </tr>
 </table>
 
----
-<h2 align="center">📊 GitHub Activity</h2>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=moviecolor&show_icons=true&theme=radical&hide_border=true&bg_color=05060f&title_color=00f0ff&icon_color=b826ff&text_color=e8e8ed" width="49%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=moviecolor&theme=radical&hide_border=true&background=05060f&stroke=00f0ff&ring=b826ff&fire=ff6b35&currStreakNum=e8e8ed&sideNums=e8e8ed&currStreakLabel=00f0ff&sideLabels=e8e8ed&dates=666666" width="49%" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=moviecolor&theme=radical&no-frame=true&no-bg=true&margin-w=4&column=7" />
-</p>
-
----
 <h2 align="center">🐍 Contribution Graph</h2>
 
 <p align="center">
