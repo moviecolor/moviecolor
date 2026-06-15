@@ -27,8 +27,6 @@
 <a href="https://coursera.org"><img src="https://img.shields.io/badge/Microsoft_AI_Product_Manager-Coursera-0078D4?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
 <a href="https://coursera.org"><img src="https://img.shields.io/badge/Generative_AI_Dev-DeepLearning.AI-22AA5E?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
 <a href="https://coursera.org"><img src="https://img.shields.io/badge/Prompt_Engineering_LLMs-Vanderbilt-FF6B35?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
-<a href="https://coursera.org"><img src="https://img.shields.io/badge/AI_Fundamentals-Google-4285F4?style=flat-square&logo=coursera&logoColor=white" /></a>
-
 </div>
 
 <br />
