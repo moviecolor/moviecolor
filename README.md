@@ -3,14 +3,7 @@
     <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=32&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&random=false&width=600&height=70&lines=AI+Workflow+Consultant+%F0%9F%9A%80;ComfyUI+%26+Image+Pipeline+Specialist+%F0%9F%A7%A9;B2B+Remote+AI+Consultant+%F0%9F%A4%9D;17+Yrs+Film+%E2%86%92+AI+Pipeline+Architect+%F0%9F%8E%AC%E2%86%92%F0%9F%A4%96" alt="Typing SVG" />
   </a>
 </p>
-markdown<div align="center">
 
-[![Microsoft AI PM](https://shields.io)](https://coursera.org)
-[![DeepLearning.AI Dev](https://shields.io)](https://coursera.org)
-[![Vanderbilt Prompting](https://shields.io)](https://coursera.org)
-[![Google AI](https://shields.io)](https://coursera.org)
-
-</div>
 
 
 <p align="center">
@@ -27,8 +20,7 @@ markdown<div align="center">
     <img src="https://img.shields.io/badge/Contact-FF6B35?style=for-the-badge&logo=maildotru&logoColor=white" />
   </a>
 </p>
-[![Coursera](https://shields.io)](https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c)
-- 🎓 **[Name of Course]** – Issued by Coursera | [Verify Certificate](https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c)
+
 ---
 
 <h2 align="center">
