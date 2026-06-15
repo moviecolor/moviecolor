@@ -4,6 +4,100 @@
   </a>
 </p>
 
+## 🧪 Proprietary IP: Air-Gapped Local AI Production Pipeline
+
+To ensure absolute data compliance for enterprise studios operating under strict NDAs, I engineer **100% offline, air-gapped automation pipelines** that process high-value visual assets locally without internet or cloud-API dependencies.
+
+### 🎯 Production Pipeline Capabilities
+
+| Modality | Capabilities |
+|----------|-------------|
+| **Text → Image** | T2I generation, iterative refine, prompt-relay chaining |
+| **Text → Video** | T2V with timeline-based prompt evolution |
+| **Image → Video** | I2V with identity preservation, low-noise & high-noise variants |
+| **Video → Video** | V2V style transfer, scene manipulation |
+| **Video Extension** | Temporal extension beyond original frame count |
+| **Text → Speech** | Qwen3-TTS full pipeline — voice cloning, multi-character dialogue, save/load voice profiles |
+| **Voice Cloning** | Clone from short sample → generate speech → feed into Wan Multitalk for talking-head video |
+| **Lip Syncing** | Audio-driven lip sync for character dialogue scenes |
+| **Character Sheets** | Multi-pose consistent character generation via chained ControlNet + PromptRelay workflows |
+| **LoRA Training** | Local LoRA creation and fine-tuning for custom characters and styles |
+| **Scene Manipulation** | Character replacement, background replacement, lighting alteration, compositing — via SAIL2, Bernini, LTX 2.3, Bindweave, Sulphur2 |
+
+### 🔧 Highlighted Model Stack & Tooling
+
+**Image Backbone:**
+- **10Eros v1** (FLUX-based, 43 GB) — primary image backbone, custom fine-tuned for all character/genre work
+- **FLUX.1-dev** variants (Kontext, Klein9B) — secondary image backbone
+- **Z-Image-Turbo** (11.5 GB) — real-time turbo generation for rapid iteration
+- **Qwen-Image-Lightning** (1.6 GB) — ultra-fast 4–8 step inference
+- **SDXL ControlNet** suite — OpenPose, depth, Canny for spatial conditioning
+
+**Video Generation:**
+- **Wan 2.2** — I2V (low/high noise), Animate (17.1 GB), **SCAIL** (16.5 GB) for structured video control
+- **Wan 2.1** — I2V-480P (15.8 GB), Multitalk (2.5 GB) for talking-head integration
+- **LTX 2.3** — 22B distilled + 1.3B control transformer for efficient high-quality video
+- **SEEDVR2** (15.4 GB) — video restoration/enhancement
+
+**Scene Manipulation & Compositing:**
+- **SAIL2** — structured scene manipulation for character/background replacement
+- **Bernini** — generative scene compositing and lighting alteration
+- **Bindweave** — multi-frame compositing and seam-aware blending
+- **Sulphur2** — high-fidelity scene reconstruction and manipulation
+
+**Audio & Voice:**
+- **Qwen3-TTS** (~12 GB total) — full voice cloning pipeline with multiple checkpoints: TTS backbone (3.6 GB) + voice adapter modules (0.65 GB). Supports sample→clone→save→generate workflow and multi-character dialogue.
+
+**Key Differentiator Nodes:**
+- **Prompt Relay** — chains multiple prompts across a video timeline for smooth narrative transitions. Critical for LTX 2.3 + 10Eros timeline videos and Wan 2.2 structured multi-prompt generation.
+- **ControlNet Union** — combined pose/depth/Canny conditioning for intentional composition and frame-consistent output.
+- **Qwen3-TTS Voice Pipeline** — clone a voice from a short sample, generate speech, save voice profiles, run multi-character dialogues — fully local, no cloud API.
+
+### 🔗 How They Connect
+
+```
+Voice Sample ──► Qwen3-TTS Clone ──► Wan Multitalk ──► Talking Head Video
+                                                           │
+Character Sheet ──► Prompt Relay ──► LTX / Wan Timeline ──┘
+                                                           │
+ControlNets ───────────────────────────────────────────────┘──► Pose / Composition Control
+```
+
+### ⚡ Hardware Scale & Compute Performance
+
+| Workstation | Role | Specs |
+|------------|------|-------|
+| **Primary AI Node** | Air-gapped inference & pipeline automation | NVIDIA RTX 5090 (32 GB GDDR7), Intel i9-14900K, 96 GB DDR5, ComfyUI on local loop (`127.0.0.1:8188`) |
+| **Color & Post AI** | DaVinci Resolve grading, finishing, AI-assisted post | Apple Mac Studio M2 Ultra (128 GB unified RAM) — air-gappable on demand |
+
+- **VRAM Overhead Optimization:** The RTX 5090's 32 GB of Blackwell-architecture VRAM enables sub-second local iterations, massive batch arrays, and ultra-high-resolution canvas generation entirely offline.
+- **Zero-Trust Security Loop:** Hardcoded to execute on isolated local host loops (`http://127.0.0.1:8188`). Absolutely no telemetry data, client visual payloads, or proprietary training assets cross external network boundaries.
+
+<details>
+<summary><strong>📋 Full Workstation Spec Sheet</strong></summary>
+
+| Component | Specification |
+|-----------|--------------|
+| **CPU** | Intel Core i9-14900K — 24 cores (8P+16E) / 32 threads, boost up to 6.0 GHz |
+| **RAM** | 96 GB DDR5 (2× 48 GB Corsair @ 4800 MHz, rated 6000 MHz) |
+| **GPU** | NVIDIA GeForce RTX 5090 — 32 GB GDDR7 (600 W, 2685 MHz core / 14001 MHz memory) |
+| **Storage (Internal)** | 1.86 TB NVMe (OS + fast cache), 2.8 TB HDD (model storage) |
+| **Storage (DIT RAIDs)** | 9 TB RAID 5 (archive), 32 TB RAID 0 (on-set acquisition) |
+| **Transport** | 5 × 6 TB NVMe RAID shuttle drives (secure footage transport) |
+| **OS** | Windows 11 IoT Enterprise LTSC (64-bit) |
+| **Software Stack** | Python 3.11.4, ComfyUI (local port 8188), Git, huggingface-cli |
+| **Network** | Air-gapped local LAN — zero external network dependency |
+| **Thermals** | GPU idle 34°C / 72 W — max 600 W under full load |
+
+**Key Air-Gap Notes:**
+- No cloud APIs required — all inference runs on the RTX 5090's 32 GB VRAM (with CPU offloading for larger models)
+- Entirely local network — zero external service dependency
+- 96 GB DDR5 + 32 GB VRAM enables Llama-70B, FLUX, and Wan 2.2 to run comfortably with CPU offloading
+- 1.86 TB NVMe (OS + fast cache) + 2.8 TB HDD + 9 TB RAID 5 for model & archive storage
+- 32 TB RAID 0 for on-set acquisition, 5x 6 TB NVMe RAID shuttle drives for secure transport
+
+</details>
+
 ---
 
 <div align="center">
