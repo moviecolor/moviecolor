@@ -24,9 +24,9 @@
   <sub>📜 <strong>Coursera Credentials</strong></sub>
   <br /><br />
 
-<a href="https://coursera.org"><img src="https://img.shields.io/badge/Microsoft_AI_Product_Manager-Coursera-0078D4?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
-<a href="https://coursera.org"><img src="https://img.shields.io/badge/Generative_AI_Dev-DeepLearning.AI-22AA5E?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
-<a href="https://coursera.org"><img src="https://img.shields.io/badge/Prompt_Engineering_LLMs-Vanderbilt-FF6B35?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
+<a href="https://coursera.org/share/01b5ad399a9f9e5441f36e47927b5fd2"><img src="https://img.shields.io/badge/GenAI_for_Software_Dev-IBM-052FAD?style=flat-square&logo=ibm&logoColor=white" /></a>&nbsp;
+<a href="https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c"><img src="https://img.shields.io/badge/Intro_GenAI_Software_Dev-DeepLearning.AI-22AA5E?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
+<a href="https://coursera.org/share/fc1a1ee3e16dbe1d5f7e236951c8d389"><img src="https://img.shields.io/badge/Prompt_Engineering_ChatGPT-Vanderbilt-FF6B35?style=flat-square&logo=coursera&logoColor=white" /></a>
 </div>
 
 <br />
