@@ -37,31 +37,31 @@
 
 <p align="center">
   <!-- AI Image/Video -->
-  <img src="https://img.shields.io/badge/ComfyUI-FF6B35?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/Runway-000000?style=flat-square&logo=runway&logoColor=white" />
-  <img src="https://img.shields.io/badge/Kling-8A2BE2?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/Midjourney-000000?style=flat-square&logo=minecraft&logoColor=white" />
-  <img src="https://img.shields.io/badge/Sana-00BFFF?style=flat-square&logoColor=white" />
+  <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/ComfyUI-FF6B35?style=flat-square&logoColor=white" /></a>
+  <a href="https://runwayml.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Runway-000000?style=flat-square&logo=runway&logoColor=white" /></a>
+  <a href="https://klingai.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Kling-8A2BE2?style=flat-square&logoColor=white" /></a>
+  <a href="https://midjourney.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Midjourney-000000?style=flat-square&logo=minecraft&logoColor=white" /></a>
+  <a href="https://github.com/NVlabs/Sana" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Sana-00BFFF?style=flat-square&logoColor=white" /></a>
   <br />
-  <img src="https://img.shields.io/badge/FLUX-8A2BE2?style=flat-square&logo=proton&logoColor=white" />
-  <img src="https://img.shields.io/badge/Hunyuan-FF0000?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/WAN_2.2-00B300?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/LTX_Video-4169E1?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/Z--Image_Turbo-FF4500?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/SULPHUR2-FF6600?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/SCAIL2-4B0082?style=flat-square&logoColor=white" />
+  <a href="https://github.com/black-forest-labs/flux" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/FLUX-8A2BE2?style=flat-square&logo=proton&logoColor=white" /></a>
+  <a href="https://github.com/Tencent/HunyuanVideo" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Hunyuan-FF0000?style=flat-square&logoColor=white" /></a>
+  <a href="https://github.com/Wan-Video/Wan2.1" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/WAN_2.2-00B300?style=flat-square&logoColor=white" /></a>
+  <a href="https://github.com/Lightricks/LTX-Video" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/LTX_Video-4169E1?style=flat-square&logoColor=white" /></a>
+  <a href="https://github.com/Z-Image/Z-Image-Turbo" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Z--Image_Turbo-FF4500?style=flat-square&logoColor=white" /></a>
+  <a href="https://github.com/search?q=SULPHUR2+ComfyUI" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SULPHUR2-FF6600?style=flat-square&logoColor=white" /></a>
+  <a href="https://github.com/search?q=SCAIL2+ComfyUI" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SCAIL2-4B0082?style=flat-square&logoColor=white" /></a>
   <br />
   <!-- Tools -->
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/DaVinci_Resolve-000000?style=flat-square&logo=davinciresolve&logoColor=white" />
-  <img src="https://img.shields.io/badge/Live_Grade-00BFAE?style=flat-square&logoColor=white" />
-  <img src="https://img.shields.io/badge/LLMs-FF6B35?style=flat-square&logo=openai&logoColor=white" />
-  <img src="https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/OpenCode-656363?style=flat-square&logo=opencode&logoColor=white" />
+  <a href="https://python.org" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /></a>
+  <a href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/DaVinci_Resolve-000000?style=flat-square&logo=davinciresolve&logoColor=white" /></a>
+  <a href="https://www.assimilateinc.com/products/livegrade/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Live_Grade-00BFAE?style=flat-square&logoColor=white" /></a>
+  <a href="https://openai.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/LLMs-FF6B35?style=flat-square&logo=openai&logoColor=white" /></a>
+  <a href="https://ollama.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white" /></a>
+  <a href="https://docker.com" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" /></a>
+  <a href="https://opencode.ai" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/OpenCode-656363?style=flat-square&logo=opencode&logoColor=white" /></a>
   <br />
   <img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,opencv,git,githubactions,md" />
-  <img src="https://kazuito.gallerycdn.vsassets.io/extensions/kazuito/ghostty/1.0.3/1774192215818/Microsoft.VisualStudio.Services.Icons.Default" width="48" height="48" />
+  <a href="https://ghostty.org" target="_blank" rel="noopener"><img src="https://kazuito.gallerycdn.vsassets.io/extensions/kazuito/ghostty/1.0.3/1774192215818/Microsoft.VisualStudio.Services.Icons.Default" width="48" height="48" /></a>
 </p>
 
 ---
