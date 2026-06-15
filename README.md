@@ -51,7 +51,7 @@ To ensure absolute data compliance for enterprise studios operating under strict
 | **Lip Syncing** | Audio-driven lip sync for character dialogue scenes |
 | **Character Sheets** | Multi-pose consistent character generation via chained ControlNet + PromptRelay workflows |
 | **LoRA Training** | Local LoRA creation and fine-tuning for custom characters and styles |
-| **Scene Manipulation** | Character replacement, background replacement, lighting alteration, compositing |
+| **Scene Manipulation** | Character replacement, background replacement, lighting alteration, compositing — via SAIL2, Bernini, LTX 2.3, Bindweave, Sulphur2 |
 
 ### 🔧 Highlighted Model Stack & Tooling
 
@@ -67,6 +67,12 @@ To ensure absolute data compliance for enterprise studios operating under strict
 - **Wan 2.1** — I2V-480P (15.8 GB), Multitalk (2.5 GB) for talking-head integration
 - **LTX 2.3** — 22B distilled + 1.3B control transformer for efficient high-quality video
 - **SEEDVR2** (15.4 GB) — video restoration/enhancement
+
+**Scene Manipulation & Compositing:**
+- **SAIL2** — structured scene manipulation for character/background replacement
+- **Bernini** — generative scene compositing and lighting alteration
+- **Bindweave** — multi-frame compositing and seam-aware blending
+- **Sulphur2** — high-fidelity scene reconstruction and manipulation
 
 **Audio & Voice:**
 - **Qwen3-TTS** (~12 GB total) — full voice cloning pipeline with multiple checkpoints: TTS backbone (3.6 GB) + voice adapter modules (0.65 GB). Supports sample→clone→save→generate workflow and multi-character dialogue.
