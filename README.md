@@ -31,6 +31,49 @@
 
 <br />
 
+---
+
+## 🧪 Proprietary IP: Air-Gapped Local Color Space Reversal & Identity Pipelines
+
+To ensure absolute data compliance for enterprise studios operating under strict NDAs, I engineer **100% offline, air-gapped automation tools** that process high-value visual assets locally without internet or cloud-API dependencies.
+
+### 🛠️ Architecture & Core Infrastructure
+
+- **The Pipeline Engine:** Programmatically reconstructs flat, wide-dynamic-range cinematic log canvases from compressed, finished Rec.709 show frames, serving as an intelligent asset "De-Grader."
+- **The Local Model Stack:** Deploys Alibaba Tongyi-MAI's **Z-Image-Turbo** (Apache 2.0) and **Qwen2.5-VL** (Apache 2.0) models natively inside localized ComfyUI environments.
+- **Identity & Continuity Control:** Integrates local **EchoVideo** structures to preserve strict character facial geometry, lighting consistency, and wardrobe continuity across multi-frame generations.
+
+### ⚡ Hardware Scale & Compute Performance
+
+- **Primary Workstation Node:** Powered by a local flagship **NVIDIA RTX 5090** processing block.
+- **VRAM Overhead Optimization:** Fully optimized to leverage 32 GB of high-bandwidth Blackwell-architecture VRAM, enabling sub-second local iterations, massive batch arrays, and ultra-high-resolution canvas generation entirely offline.
+- **Zero-Trust Security Loop:** Hardcoded to execute on isolated local host loops (`http://127.0.0.1:8188`). Absolutely no telemetry data, client visual payloads, or proprietary training assets cross external network boundaries.
+
+<details>
+<summary><strong>📋 Full Workstation Spec Sheet</strong></summary>
+
+| Component | Specification |
+|-----------|--------------|
+| **CPU** | Intel Core i9-14900K — 24 cores (8P+16E) / 32 threads, boost up to 6.0 GHz |
+| **RAM** | 96 GB DDR5 (2× 48 GB Corsair @ 4800 MHz, rated 6000 MHz) |
+| **GPU** | NVIDIA GeForce RTX 5090 — 32 GB GDDR7 (600 W, 2685 MHz core / 14001 MHz memory) |
+| **Storage** | 1.86 TB NVMe (OS + fast cache), 2.8 TB HDD (model storage), USB-C external SSD |
+| **Motherboard** | ASUS ROG MAXIMUS Z790 HERO (BIOS v3107) |
+| **OS** | Windows 11 IoT Enterprise LTSC (64-bit, build 26100) |
+| **Software Stack** | Python 3.11.4, ComfyUI (local port 8188), Git, huggingface-cli |
+| **Network** | Intel I226-V 1 GbE — local-only IP (10.0.0.119), no external auth dependency |
+| **Thermals** | GPU idle 34°C / 72 W — max 600 W under full load |
+
+**Key Air-Gap Notes:**
+- No cloud APIs required — all inference runs on the RTX 5090's 32 GB VRAM (with CPU offloading for larger models)
+- Local-only IP (10.x.x.x), zero external service dependency
+- 96 GB DDR5 + 32 GB VRAM enables Llama-70B, FLUX, and Wan 2.2 to run comfortably with CPU offloading
+- 2.8 TB HDD for model storage, 1.86 TB NVMe for fast dataset/cache I/O
+
+</details>
+
+---
+
 <p align="center">
   <a href="https://moviecolor.github.io">
     <img src="https://custom-icon-badges.demolab.com/badge/-PORTFOLIO-00f0ff?style=for-the-badge&logo=rocket&logoColor=black" />
