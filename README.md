@@ -33,15 +33,58 @@
 
 ---
 
-## 🧪 Proprietary IP: Air-Gapped Local Color Space Reversal & Identity Pipelines
+## 🧪 Proprietary IP: Air-Gapped Local AI Production Pipeline
 
-To ensure absolute data compliance for enterprise studios operating under strict NDAs, I engineer **100% offline, air-gapped automation tools** that process high-value visual assets locally without internet or cloud-API dependencies.
+To ensure absolute data compliance for enterprise studios operating under strict NDAs, I engineer **100% offline, air-gapped automation pipelines** that process high-value visual assets locally without internet or cloud-API dependencies.
 
-### 🛠️ Architecture & Core Infrastructure
+### 🎯 Production Pipeline Capabilities
 
-- **The Pipeline Engine:** Programmatically reconstructs flat, wide-dynamic-range cinematic log canvases from compressed, finished Rec.709 show frames, serving as an intelligent asset "De-Grader."
-- **The Local Model Stack:** Deploys Alibaba Tongyi-MAI's **Z-Image-Turbo** (Apache 2.0) and **Qwen2.5-VL** (Apache 2.0) models natively inside localized ComfyUI environments.
-- **Identity & Continuity Control:** Integrates local **EchoVideo** structures to preserve strict character facial geometry, lighting consistency, and wardrobe continuity across multi-frame generations.
+| Modality | Capabilities |
+|----------|-------------|
+| **Text → Image** | T2I generation, iterative refine, prompt-relay chaining |
+| **Text → Video** | T2V with timeline-based prompt evolution |
+| **Image → Video** | I2V with identity preservation, low-noise & high-noise variants |
+| **Video → Video** | V2V style transfer, scene manipulation |
+| **Video Extension** | Temporal extension beyond original frame count |
+| **Text → Speech** | Qwen3-TTS full pipeline — voice cloning, multi-character dialogue, save/load voice profiles |
+| **Voice Cloning** | Clone from short sample → generate speech → feed into Wan Multitalk for talking-head video |
+| **Lip Syncing** | Audio-driven lip sync for character dialogue scenes |
+| **Character Sheets** | Multi-pose consistent character generation via chained ControlNet + PromptRelay workflows |
+| **LoRA Training** | Local LoRA creation and fine-tuning for custom characters and styles |
+| **Scene Manipulation** | Character replacement, background replacement, lighting alteration, compositing |
+
+### 🔧 Highlighted Model Stack & Tooling
+
+**Image Backbone:**
+- **10Eros v1** (FLUX-based, 43 GB) — primary image backbone, custom fine-tuned for all character/genre work
+- **FLUX.1-dev** variants (Kontext, Klein9B) — secondary image backbone
+- **Z-Image-Turbo** (11.5 GB) — real-time turbo generation for rapid iteration
+- **Qwen-Image-Lightning** (1.6 GB) — ultra-fast 4–8 step inference
+- **SDXL ControlNet** suite — OpenPose, depth, Canny for spatial conditioning
+
+**Video Generation:**
+- **Wan 2.2** — I2V (low/high noise), Animate (17.1 GB), **SCAIL** (16.5 GB) for structured video control
+- **Wan 2.1** — I2V-480P (15.8 GB), Multitalk (2.5 GB) for talking-head integration
+- **LTX 2.3** — 22B distilled + 1.3B control transformer for efficient high-quality video
+- **SEEDVR2** (15.4 GB) — video restoration/enhancement
+
+**Audio & Voice:**
+- **Qwen3-TTS** (~12 GB total) — full voice cloning pipeline with multiple checkpoints: TTS backbone (3.6 GB) + voice adapter modules (0.65 GB). Supports sample→clone→save→generate workflow and multi-character dialogue.
+
+**Key Differentiator Nodes:**
+- **Prompt Relay** — chains multiple prompts across a video timeline for smooth narrative transitions. Critical for LTX 2.3 + 10Eros timeline videos and Wan 2.2 structured multi-prompt generation.
+- **ControlNet Union** — combined pose/depth/Canny conditioning for intentional composition and frame-consistent output.
+- **Qwen3-TTS Voice Pipeline** — clone a voice from a short sample, generate speech, save voice profiles, run multi-character dialogues — fully local, no cloud API.
+
+### 🔗 How They Connect
+
+```
+Voice Sample ──► Qwen3-TTS Clone ──► Wan Multitalk ──► Talking Head Video
+                                                           │
+Character Sheet ──► Prompt Relay ──► LTX / Wan Timeline ──┘
+                                                           │
+ControlNets ───────────────────────────────────────────────┘──► Pose / Composition Control
+```
 
 ### ⚡ Hardware Scale & Compute Performance
 
