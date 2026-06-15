@@ -246,12 +246,7 @@ ControlNets ──────────────────────�
                 </tr>
 </table>
 
-<h2 align="center">🐍 Contribution Graph</h2>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/moviecolor/moviecolor/output/github-contribution-grid-snake-dark.svg" />
-</p>
-<h2 align="center">🤝 Let's Connect</h2>
+<h2 align="center">Let's Connect</h2>
 
 <p align="center">
   I'm open to teams ready to automate, scale, or debug their AI image pipelines. 
@@ -278,8 +273,4 @@ ControlNets ──────────────────────�
 
 <p align="center">
   <sub>🎬 Crafted with 17 years of cinema pipeline expertise + a dash of AI magic ✨</sub>
-</p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,3,6,12&height=120&section=footer" />
 </p>
