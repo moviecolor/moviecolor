@@ -6,8 +6,6 @@
 
 ---
 
-<br />
-
 <div align="center">
   <h3>📜 Coursera Credentials</h3>
   <br /><br />
@@ -16,8 +14,6 @@
 <a href="https://coursera.org/share/8d08239796b3f1b449438bcc2471c22c"><img src="https://img.shields.io/badge/Intro_GenAI_Software_Dev-DeepLearning.AI-22AA5E?style=flat-square&logo=coursera&logoColor=white" /></a>&nbsp;
 <a href="https://coursera.org/share/fc1a1ee3e16dbe1d5f7e236951c8d389"><img src="https://img.shields.io/badge/Prompt_Engineering_ChatGPT-Vanderbilt-FF6B35?style=flat-square&logo=coursera&logoColor=white" /></a>
 </div>
-
-<br />
 
 <p align="center">
   <a href="https://moviecolor.github.io">
