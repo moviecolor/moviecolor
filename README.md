@@ -1,27 +1,15 @@
 <p align="center">
   <a href="https://moviecolor.github.io">
     <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=32&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&random=false&width=600&height=70&lines=AI+Workflow+Consultant+%F0%9F%9A%80;ComfyUI+%26+Image+Pipeline+Specialist+%F0%9F%A7%A9;B2B+Remote+AI+Consultant+%F0%9F%A4%9D;17+Yrs+Film+%E2%86%92+AI+Pipeline+Architect+%F0%9F%8E%AC%E2%86%92%F0%9F%A4%96" alt="Typing SVG" />
-
-
-<div align="center">
-
-[![Microsoft AI PM](https://shields.io)](https://coursera.org)
-[![DeepLearning.AI Dev](https://shields.io)](https://coursera.org)
-[![Vanderbilt Prompting](https://shields.io)](https://coursera.org)
-[![Google AI](https://shields.io)](https://coursera.org)
-
-</div>
-
----
-
-
-
-    
   </a>
 </p>
 
+---
+
+<br />
+
 <div align="center">
-  <sub>📜 <strong>Coursera Credentials</strong></sub>
+  <h3>📜 Coursera Credentials</h3>
   <br /><br />
 
 <a href="https://coursera.org/share/01b5ad399a9f9e5441f36e47927b5fd2"><img src="https://img.shields.io/badge/GenAI_for_Software_Dev-IBM-052FAD?style=flat-square&logo=ibm&logoColor=white" /></a>&nbsp;
