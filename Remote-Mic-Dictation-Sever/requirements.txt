@@ -1,0 +1,5 @@
+flask>=3.0,<4.0
+openai-whisper>=20241129
+numpy>=1.24
+cryptography>=42.0
+Pillow>=10.0
