@@ -150,6 +150,13 @@ def status():
         "model": MODEL_SIZE,
     }
 
+@app.route("/log-error", methods=["POST"])
+def log_error():
+    data = flask.request.get_json(silent=True) or {}
+    print(f"🐛 CLIENT ERROR: {data.get('where')}: {data.get('message')}", flush=True)
+    print(f"   User-Agent: {data.get('userAgent', 'unknown')}", flush=True)
+    return {"ok": True}
+
 # ─── HTML page (embedded template) ──────────────────────────────────
 HTML_PAGE_STR = ""
 

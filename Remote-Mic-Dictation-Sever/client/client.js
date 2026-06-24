@@ -57,32 +57,62 @@ function getSupportedMimeType() {
   return ""; // let browser decide
 }
 
+// Report errors back to the server for debugging
+function logError(where, msg) {
+  setStatus("Error: " + msg);
+  fetch("/log-error", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ where: where, message: msg, userAgent: navigator.userAgent }),
+  }).catch(() => {});
+}
+
 async function toggle() {
   if (!isRecording) {
     // START recording
+    let stream2;
     try {
-      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      setStatus("Requesting mic access...");
+      stream2 = await navigator.mediaDevices.getUserMedia({ audio: true });
     } catch (e) {
-      setStatus("Mic access denied. Please allow microphone access.");
+      logError("getUserMedia", e.message || e);
       return;
     }
 
     const mimeType = getSupportedMimeType();
-    const options = mimeType ? { mimeType } : {};
-    mediaRecorder  = new MediaRecorder(stream, options);
-    const chunks   = [];
 
-    mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+    let recorder;
+    try {
+      const options = mimeType ? { mimeType } : {};
+      recorder = new MediaRecorder(stream2, options);
+    } catch (e) {
+      logError("MediaRecorder", e.message || e + " (mimeType=" + mimeType + ")");
+      stream2.getTracks().forEach((t) => t.stop());
+      return;
+    }
 
-    mediaRecorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: mimeType || "audio/webm" });
-      await transcribeBlob(blob);
-      stream.getTracks().forEach((t) => t.stop());
-      stream = null;
+    const chunks = [];
+    recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+
+    recorder.onstop = async () => {
+      try {
+        const blob = new Blob(chunks, { type: mimeType || "audio/webm" });
+        await transcribeBlob(blob);
+      } catch (e) {
+        logError("transcribeBlob", e.message || e);
+      }
+      stream2.getTracks().forEach((t) => t.stop());
     };
 
-    mediaRecorder.start();
+    try {
+      recorder.start();
+    } catch (e) {
+      logError("recorder.start", e.message || e);
+      return;
+    }
 
+    stream = stream2;
+    mediaRecorder = recorder;
     isRecording   = true;
     micBtn.classList.add("recording");
     setStatus("Listening… tap to stop & transcribe");
