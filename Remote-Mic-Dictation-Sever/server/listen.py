@@ -117,15 +117,16 @@ def client_js():
 @app.route("/transcribe", methods=["POST"])
 def transcribe():
     """Receive audio, transcribe, paste, return result."""
-    if "audio" not in flask.request.files:
-        return {"error": "No audio file"}, 400
-
-    audio_file = flask.request.files["audio"]
-    audio_data = audio_file.read()
-    filename = audio_file.filename or "audio.webm"
+    # Accept both raw body and multipart upload
+    audio_data = flask.request.get_data()
+    filename = "audio.webm"
+    if not audio_data and "audio" in flask.request.files:
+        audio_file = flask.request.files["audio"]
+        audio_data = audio_file.read()
+        filename = audio_file.filename or "audio.webm"
 
     if len(audio_data) < 100:
-        return {"text": "", "error": "Audio too small"}
+        return {"text": "", "error": "Audio too small"}, 400
 
     try:
         text = transcribe_audio(audio_data, filename)
