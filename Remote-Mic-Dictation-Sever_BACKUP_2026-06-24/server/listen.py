@@ -8,7 +8,7 @@ import os, sys, time, json, wave, io, tempfile, struct
 from pathlib import Path
 
 import flask
-import whisper      # top-level import (works from launchd — proved in earlier runs)
+import whisper
 import numpy as np
 
 # ─── Config ─────────────────────────────────────────────────────────
@@ -24,7 +24,7 @@ CLIENT_DIR = PROJECT_ROOT / "client"
 
 app = flask.Flask(__name__)
 
-# ─── Whisper model (loaded at startup, CPU only) ──────────────────
+# ─── Whisper model (lazy load) ─────────────────────────────────────
 _model = None
 
 def get_model():
@@ -45,108 +45,65 @@ def paste_text(text: str):
     p.communicate(text.encode("utf-8"))
     p.wait()
 
-    # Send Cmd+V via AppleScript to frontmost app (faster than generic System Events)
-    subprocess.run(["osascript", "-e",
-        'tell application "System Events" to keystroke "v" using command down'],
-        capture_output=True)
+    # Send Cmd+V via AppleScript (more reliable than raw CGEvent through RustDesk)
+    script = '''
+    tell application "System Events"
+        keystroke "v" using command down
+    end tell
+    '''
+    subprocess.run(["osascript", "-e", script], capture_output=True)
+    # AppleScript keystroke delay is sufficient
 
 # ─── Transcription ──────────────────────────────────────────────────
-def transcribe_audio(audio_bytes: bytes) -> str:
-    """Transcribe audio bytes using Whisper. Accepts raw Int16 PCM (16kHz mono)
-    OR any format ffmpeg can handle (auto-detected by header bytes).
+def transcribe_audio(audio_bytes: bytes, filename: str = "audio.webm") -> str:
+    """Transcribe audio bytes using Whisper. Accepts any format ffmpeg can handle.
     Returns text or error string."""
-    t_start = time.time()
     model = get_model()
 
-    audio_size_kb = len(audio_bytes) / 1024
-    audio = None
-    audio_secs = 0
+    # Save to temp file, convert to 16kHz mono WAV via ffmpeg
+    tmp_dir = Path(tempfile.mkdtemp(prefix="dictate_"))
+    input_path = tmp_dir / filename
+    wav_path = tmp_dir / "converted.wav"
 
-    # Detect format by header bytes
-    is_raw_pcm = True
-    if len(audio_bytes) >= 4:
-        # WAV starts with "RIFF"
-        if audio_bytes[:4] == b'RIFF':
-            is_raw_pcm = False
-        # WebM/Matroska starts with 0x1A45DFA3
-        elif audio_bytes[:4] == b'\x1a\x45\xdf\xa3':
-            is_raw_pcm = False
-        # MP4/M4A starts with "ftyp"
-        elif audio_bytes[4:8] == b'ftyp':
-            is_raw_pcm = False
-        # MP3 starts with 0xFFFB or 0xFFF3 or 0xFFF2
-        elif audio_bytes[0] == 0xFF and (audio_bytes[1] & 0xE0) == 0xE0:
-            is_raw_pcm = False
+    try:
+        input_path.write_bytes(audio_bytes)
 
-    if is_raw_pcm:
-        # ── Raw 16kHz Int16 PCM (from modern client) ──
-        audio = np.frombuffer(audio_bytes, dtype=np.int16).astype(np.float32) / 32768.0
-        audio_secs = len(audio) / 16000
-        t_ffmpeg = t_start  # no conversion needed
-        t_read = t_start
-        ffmpeg_time = 0.0
-        read_time = 0.0
-        write_time = 0.0
-    else:
-        # ── Compressed format — convert via ffmpeg (legacy client) ──
-        filename = "audio.webm"
-        tmp_dir = Path(tempfile.mkdtemp(prefix="dictate_"))
-        input_path = tmp_dir / filename
-        wav_path = tmp_dir / "converted.wav"
+        # Convert to 16kHz mono 16-bit PCM WAV using ffmpeg
+        import subprocess
+        result = subprocess.run(
+            [FFMPEG_PATH, "-y", "-i", str(input_path),
+             "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1",
+             str(wav_path)],
+            capture_output=True, timeout=30,
+        )
+        if result.returncode != 0:
+            return f"__ERROR__:Audio conversion failed: {result.stderr.decode(errors='ignore')[:200]}"
 
-        try:
-            input_path.write_bytes(audio_bytes)
-            t_write = time.time()
+        # Read the converted WAV
+        with wave.open(str(wav_path), 'rb') as wf:
+            nframes = wf.getnframes()
+            raw = wf.readframes(nframes)
+            audio = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
+    except subprocess.TimeoutExpired:
+        return "__ERROR__:Audio conversion timed out"
+    except Exception as e:
+        return f"__ERROR__:Audio processing failed: {e}"
+    finally:
+        # Cleanup temp files
+        import shutil
+        shutil.rmtree(tmp_dir, ignore_errors=True)
 
-            import subprocess
-            result = subprocess.run(
-                [FFMPEG_PATH, "-y",
-                 "-i", str(input_path),
-                 "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1",
-                 str(wav_path)],
-                capture_output=True, timeout=30,
-            )
-            t_ffmpeg = time.time()
-            if result.returncode != 0:
-                return f"__ERROR__:Audio conversion failed: {result.stderr.decode(errors='ignore')[:200]}"
-
-            with wave.open(str(wav_path), 'rb') as wf:
-                nframes = wf.getnframes()
-                raw = wf.readframes(nframes)
-                audio = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
-            t_read = time.time()
-            audio_secs = nframes / 16000
-            ffmpeg_time = t_ffmpeg - t_write
-            read_time = t_read - t_ffmpeg
-            write_time = t_write - t_start
-        except subprocess.TimeoutExpired:
-            return "__ERROR__:Audio conversion timed out"
-        except Exception as e:
-            return f"__ERROR__:Audio processing failed: {e}"
-        finally:
-            import shutil
-            shutil.rmtree(tmp_dir, ignore_errors=True)
-
-    if audio is None or len(audio) < 1600:  # < 0.1s
+    if len(audio) < 1600:  # < 0.1s
         return ""
 
     result = model.transcribe(
         audio,
         language="en",
-        fp16=False,       # CPU — use FP32 for best accuracy
+        fp16=False,
         no_speech_threshold=0.6,
         verbose=False,
     )
-    t_transcribe = time.time()
     text = result.get("text", "").strip()
-
-    # Log timing breakdown
-    method = "raw" if is_raw_pcm else "ffmpeg"
-    conv_time = ffmpeg_time if not is_raw_pcm else 0.0
-    print(f"⏱  [{method}] {audio_size_kb:.0f}KB audio ({audio_secs:.1f}s speech) → "
-          f"write={write_time:.1f}s ffmpeg={ffmpeg_time:.1f}s "
-          f"read={read_time:.1f}s whisper={t_transcribe-t_read:.1f}s "
-          f"total={t_transcribe-t_start:.1f}s", flush=True)
     return text
 
 # ─── Routes ─────────────────────────────────────────────────────────
@@ -161,10 +118,8 @@ def client_js():
 @app.route("/transcribe", methods=["POST"])
 def transcribe():
     """Receive audio, transcribe, paste, return result."""
-    t_req_start = time.time()
     # Accept both raw body and multipart upload
     audio_data = flask.request.get_data()
-    t_req_done = time.time()
     filename = "audio.webm"
     if not audio_data and "audio" in flask.request.files:
         audio_file = flask.request.files["audio"]
@@ -175,23 +130,18 @@ def transcribe():
         return {"text": "", "error": "Audio too small"}, 400
 
     try:
-        text = transcribe_audio(audio_data)
+        text = transcribe_audio(audio_data, filename)
     except Exception as e:
         return {"text": "", "error": str(e)}, 500
 
-    t_paste_start = time.time()
     if text.startswith("__ERROR__"):
         return {"text": "", "error": text[9:]}, 500
 
     if text:
         # Paste the text on the Mac Studio
         paste_text(text)
-        t_done = time.time()
-        print(f"⏱  HTTP receive={t_req_done-t_req_start:.1f}s paste={t_done-t_paste_start:.1f}s total_http={t_done-t_req_start:.1f}s", flush=True)
         return {"text": text, "pasted": True}
     else:
-        t_done = time.time()
-        print(f"⏱  HTTP receive={t_req_done-t_req_start:.1f}s paste=0s total_http={t_done-t_req_start:.1f}s", flush=True)
         return {"text": "", "pasted": False}
 
 @app.route("/status")
@@ -289,7 +239,7 @@ if __name__ == "__main__":
     print(f"   Press Ctrl+C to quit", flush=True)
     print(flush=True)
 
-    # Pre-load model on startup (CPU — no MPS to avoid launchd hang)
+    # Pre-load model on startup
     print("🔄 Pre-loading Whisper model on startup...", flush=True)
     t0 = time.time()
     get_model()

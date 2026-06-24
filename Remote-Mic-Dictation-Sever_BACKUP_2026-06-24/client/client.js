@@ -1,9 +1,8 @@
-// Dictate Web Client — Record mic, decode to raw 16kHz PCM in-browser,
-// send to server for Whisper transcription. No ffmpeg needed on server.
+// Dictate Web Client — Voice recording via Browser MediaDevices API
+// Sends audio to the remote Whisper server for transcription, auto-pastes into active app
 
 let mediaRecorder = null;
 let stream = null;
-let audioContext = null;  // created on first use for decoding
 
 // ─── Status updates ──────────────────────────────────────────
 const micBtn     = document.getElementById("micBtn");
@@ -22,48 +21,12 @@ function updateResult(text) {
   copyBtn.style.display = "";
 }
 
-// ─── Decode recorded blob to raw 16kHz Int16 PCM ────────────
-async function blobToRawPcm(blob) {
-  // Read blob as ArrayBuffer
-  const arrayBuffer = await blob.arrayBuffer();
-
-  // Create AudioContext (lazy, shared)
-  if (!audioContext) audioContext = new AudioContext();
-
-  // Decode the compressed audio → AudioBuffer (Float32, native sample rate)
-  const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-
-  // Resample to 16kHz mono via OfflineAudioContext
-  const duration = audioBuffer.duration;
-  const targetSampleRate = 16000;
-  const targetLength = Math.ceil(duration * targetSampleRate);
-
-  const offlineCtx = new OfflineAudioContext(1, targetLength, targetSampleRate);
-  const source = offlineCtx.createBufferSource();
-  source.buffer = audioBuffer;
-  source.connect(offlineCtx.destination);
-  source.start();
-  const rendered = await offlineCtx.startRendering();
-
-  // Get PCM data as Float32, convert to Int16
-  const pcm = rendered.getChannelData(0);
-  const pcm16 = new Int16Array(pcm.length);
-  for (let i = 0; i < pcm.length; i++) {
-    const s = Math.max(-1, Math.min(1, pcm[i]));
-    pcm16[i] = s < 0 ? Math.round(s * 32768) : Math.round(s * 32767);
-  }
-  return pcm16.buffer;
-}
-
-// ─── Send raw PCM to server for transcription ───────────────
-async function transcribePcm(rawPcmBuffer) {
+// ─── Core transcription via fetch ──────────────────────────────
+async function transcribeBlob(blob) {
   setStatus("Sending for transcription...");
   try {
-    const resp = await fetch("/transcribe", {
-      method: "POST",
-      body: rawPcmBuffer,
-    });
-    const data = await resp.json();
+    const resp     = await fetch("/transcribe", { method: "POST", body: blob });
+    const data     = await resp.json();
 
     if (data.error) {
       setStatus("Error: " + data.error);
@@ -91,7 +54,7 @@ function getSupportedMimeType() {
   for (const t of types) {
     if (MediaRecorder.isTypeSupported(t)) return t;
   }
-  return "";
+  return ""; // let browser decide
 }
 
 // Report errors back to the server for debugging
@@ -106,7 +69,7 @@ function logError(where, msg) {
 
 async function toggle() {
   if (!isRecording) {
-    // ── START recording ──
+    // START recording
     let stream2;
     try {
       setStatus("Requesting mic access...");
@@ -134,11 +97,9 @@ async function toggle() {
     recorder.onstop = async () => {
       try {
         const blob = new Blob(chunks, { type: mimeType || "audio/webm" });
-        setStatus("Converting audio…");
-        const rawPcm = await blobToRawPcm(blob);
-        await transcribePcm(rawPcm);
+        await transcribeBlob(blob);
       } catch (e) {
-        logError("processAudio", e.message || e);
+        logError("transcribeBlob", e.message || e);
       }
       stream2.getTracks().forEach((t) => t.stop());
     };
@@ -157,7 +118,7 @@ async function toggle() {
     setStatus("Listening… tap to stop & transcribe");
     hintEl.style.display = "none";
   } else {
-    // ── STOP recording ──
+    // STOP recording
     if (mediaRecorder && mediaRecorder.state !== "inactive") {
       mediaRecorder.stop();
     }
