@@ -16,6 +16,7 @@ HOST = "0.0.0.0"
 PORT = 8765
 MODEL_SIZE = "base"
 AUDIO_FORMAT = (1, 2, 16000, 16000, 'NONE', 'NONE')  # 16-bit 16kHz mono WAV
+FFMPEG_PATH = "/opt/homebrew/bin/ffmpeg"  # Homebrew path on Apple Silicon
 
 # Find project root (works regardless of working directory)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -70,7 +71,7 @@ def transcribe_audio(audio_bytes: bytes, filename: str = "audio.webm") -> str:
         # Convert to 16kHz mono 16-bit PCM WAV using ffmpeg
         import subprocess
         result = subprocess.run(
-            ["ffmpeg", "-y", "-i", str(input_path),
+            [FFMPEG_PATH, "-y", "-i", str(input_path),
              "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1",
              str(wav_path)],
             capture_output=True, timeout=30,
