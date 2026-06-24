@@ -157,6 +157,15 @@ def log_error():
     print(f"   User-Agent: {data.get('userAgent', 'unknown')}", flush=True)
     return {"ok": True}
 
+@app.route("/cert.pem")
+def download_cert():
+    """Serve the SSL cert so the user can install it on remote machines."""
+    cert_dir = Path.home() / ".dictate-ssl"
+    cert_file = cert_dir / "cert.pem"
+    if cert_file.exists():
+        return flask.send_file(str(cert_file), mimetype="application/x-pem-file", as_attachment=True, download_name="dictate-cert.pem")
+    return {"error": "No cert found"}, 404
+
 # ─── HTML page (embedded template) ──────────────────────────────────
 HTML_PAGE_STR = ""
 
@@ -203,7 +212,12 @@ def generate_self_signed_cert(cert_dir: Path):
         .serial_number(x509.random_serial_number())
         .not_valid_before(datetime.datetime.now(datetime.timezone.utc))
         .not_valid_after(datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=365))
-        .add_extension(x509.SubjectAlternativeName([x509.DNSName("localhost"), x509.IPAddress(ipaddress.IPv4Address("10.0.0.164"))]), critical=False)
+        .add_extension(x509.SubjectAlternativeName([
+            x509.DNSName("localhost"),
+            x509.IPAddress(ipaddress.IPv4Address("10.0.0.164")),
+            x509.IPAddress(ipaddress.IPv4Address("10.0.0.225")),
+            x509.IPAddress(ipaddress.IPv4Address("100.100.235.34")),
+        ]), critical=False)
         .sign(key, hashes.SHA256(), backend=default_backend())
     )
     with open(cert_file, "wb") as f:
