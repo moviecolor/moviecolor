@@ -49,6 +49,14 @@ async function transcribeBlob(blob) {
 // ─── Start / Stop recording ──────────────────────────────────────
 let isRecording = false;
 
+function getSupportedMimeType() {
+  const types = ["audio/webm", "audio/webm;codecs=opus", "audio/ogg;codecs=opus", "audio/mp4", "audio/mpeg"];
+  for (const t of types) {
+    if (MediaRecorder.isTypeSupported(t)) return t;
+  }
+  return ""; // let browser decide
+}
+
 async function toggle() {
   if (!isRecording) {
     // START recording
@@ -59,28 +67,21 @@ async function toggle() {
       return;
     }
 
-    const mimeType = MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "audio/ogg";
-    mediaRecorder  = new MediaRecorder(stream, { mimeType });
+    const mimeType = getSupportedMimeType();
+    const options = mimeType ? { mimeType } : {};
+    mediaRecorder  = new MediaRecorder(stream, options);
     const chunks   = [];
 
     mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
 
     mediaRecorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: mimeType });
+      const blob = new Blob(chunks, { type: mimeType || "audio/webm" });
       await transcribeBlob(blob);
       stream.getTracks().forEach((t) => t.stop());
       stream = null;
     };
 
-    if (typeof mediaRecorder.start === "function") {
-      mediaRecorder.start();
-    } else {
-      // Safari 15 fallback: use ondatachune instead
-      const intervalId = setInterval(() => {
-        if (mediaRecorder.state !== "recording") return;
-        chunks.length = 0;         // reset — will grab first chunk next event
-      }, 2000);
-    }
+    mediaRecorder.start();
 
     isRecording   = true;
     micBtn.classList.add("recording");
