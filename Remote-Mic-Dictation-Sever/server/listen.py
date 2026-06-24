@@ -110,6 +110,10 @@ def transcribe_audio(audio_bytes: bytes, filename: str = "audio.webm") -> str:
 def index():
     with open(CLIENT_DIR / "index.html") as f: return "<!DOCTYPE html>" + f.read()
 
+@app.route("/client.js")
+def client_js():
+    with open(CLIENT_DIR / "client.js") as f: return flask.Response(f.read(), mimetype="application/javascript")
+
 @app.route("/transcribe", methods=["POST"])
 def transcribe():
     """Receive audio, transcribe, paste, return result."""
