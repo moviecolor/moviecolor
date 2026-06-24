@@ -126,6 +126,9 @@
     <td width="50%" valign="top" style="padding: 16px; border: 1px solid #30363d; border-radius: 8px;">
       <h3 align="center">🎬 DIT Ungrade Tool</h3>
       <p align="center">
+        <a href="ditungrade_demo.gif"><img src="ditungrade_demo.gif" width="100%" alt="DIT Ungrade Tool demo" /></a>
+      </p>
+      <p align="center">
         <sub><i>Reverse on-set grades back to camera LOG for portfolio comparison sliders.</i></sub>
       </p>
       <p align="center">
