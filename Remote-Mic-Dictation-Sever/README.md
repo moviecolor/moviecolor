@@ -11,16 +11,17 @@ Mac Studios and Mac Minis have **no built-in microphone**. You can't dictate any
 - Run `server/listen.py` on your Mac Studio — it starts a Whisper AI transcription server on port 8765
 - Open `https://<macstudio-ip>:8765` from any laptop's browser
 - Tap the microphone → speak → tap again to transcribe
-- The audio is captured via the browser's `MediaDevices` API and sent as WebM/OGG to the server
-- Whisper AI transcribes the audio to text on the Mac Studio
-- The text is automatically **command-V pasted** into whatever application has focus on the Mac Studio
+- The audio is captured via the browser's `MediaDevices` API, **decoded raw in the browser** via Web Audio API, and sent as 16kHz Int16 PCM directly to the server
+- Whisper AI transcribes the audio to text on the Mac Studio (~0.3s)
+- The text is automatically **command-V pasted** into whatever application has focus on the Mac Studio (~1.6s)
+- **Total round trip: ~2 seconds** — 12x faster than the legacy WebM→ffmpeg path
 
 ```
-[Laptop Browser] → MediaDevices API captures mic → HTTP POST /transcribe
+[Laptop Browser] → MediaDevices captures mic → decodeAudioData() → resample to 16kHz
+       ↓  (raw Int16 PCM via HTTPS POST)
+[Mac Studio]  → numpy.frombuffer() → Whisper AI (~0.3s) → osascript paste (~1.6s)
        ↓
-[Mac Studio]  → Whisper AI transcribes → auto-paste via osascript + pbcopy
-       ↓
-[Active App]  ← Cmd+V pastes your dictated text into Notes, Slack, etc.
+[Active App]  ← pastes transcribed text into Notes, Slack, etc.
 ```
 
 ## Project Structure
@@ -93,10 +94,11 @@ Allow Dictate access to the microphone system-wide in **System Settings → Priv
 
 | Component | Role |
 |---|---|
-| Flasks server | Runs on Mac Studio, receives audio POSTs, serves the web UI |
-| Whisper AI | Performs speech-to-text locally on the Mac Studio (no cloud API) |
-| Browser client | Uses `MediaDevices.getUserMedia` to capture mic from remote laptop |
-| Paste automation | Uses `osascript` + `pbcopy` to paste transcribed text into active app |
+| Flask server (listen.py) | Runs on Mac Studio, receives raw PCM POSTs, serves the web UI, auto-pastes |
+| Whisper AI (CPU) | Performs speech-to-text locally — ~0.3s per dictation clip |
+| Browser client (client.js) | Captures mic via `getUserMedia`, **decodes audio natively via Web Audio API**, sends raw 16kHz Int16 PCM |
+| Paste automation | Inline `osascript` keystroke — ~1.6s paste time |
+| launchd plist | Auto-starts server on login — `~/Library/LaunchAgents/com.dictate.server.plist` |
 
 ## Security
 

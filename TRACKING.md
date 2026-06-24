@@ -1,6 +1,6 @@
 # TRACKING — Active Projects & State
 
-**Last Updated:** 2026-06-23 17:45
+**Last Updated:** 2026-06-24 13:30
 **Owner:** Ryan Wuckert (moviecolor)
 
 ## Active Repos
@@ -20,9 +20,12 @@
 - **Note:** Also exists as standalone repo at GitHub/_BACKUP_2026-06-15/ditungrade/
 
 ### Dictate — Remote Mic Voice Dictation
-- **Status:** Complete. Server runs `python server/listen.py` on port 8765, serves web client. Use laptop mic → transcribe via Whisper AI → auto-paste into Mac Studio apps.
-- **Three-computer setup designed for:** Laptop #1 (mic source) + Mac Studio (transcription) + Laptop #2 (free for research)
-- **Session docs committed:** SESSION_HANDOFF.md, progress.md, task_plan.md, session-log-2026-06-23_1624.md
+- **Status:** Complete — 12x speed improvement (24s → ~2s round trip)
+- **Key fix:** Browser-side audio decode eliminated ffmpeg bottleneck entirely; server reads raw PCM directly
+- **Deployment:** Mac Studio via launchd (auto-start), CPU-only Whisper (~0.3s transcription), auto-paste via AppleScript
+- **Performance:** [raw] 0.0s decode + 0.3s whisper + 1.6s paste = ~2s total
+- **Session docs:** SESSION_HANDOFF.md, progress.md, task_plan.md, findings.md, session-log
+- **Standalone repo:** `github.com/moviecolor/Remote-Mic-Dictation-Sever` — fully synced
 
 ## Active Non-Code Projects
 

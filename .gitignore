@@ -1,0 +1,24 @@
+# Local backup directories
+Remote-Mic-Dictation-Sever_BACKUP_*/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~

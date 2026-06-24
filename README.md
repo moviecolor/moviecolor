@@ -99,26 +99,45 @@
 ---
 <h2 align="center">🛒 Apps I Built — Available Now</h2>
 
-<p align="center">
-  <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever">
-    <img src="https://img.shields.io/badge/Dictate-FF6B35?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
-  <a href="https://github.com/moviecolor/ditungrade">
-    <img src="https://img.shields.io/badge/DIT_Ungrade_Tool-00BFAE?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
-</p>
-
-<table align="center">
+<table align="center" width="90%">
   <tr>
-    <td align="center" width="50%">
-      <strong>🎙️ Dictate</strong><br />
-      <sub>Remote mic voice dictation — use your laptop's mic to type on any Mac on your network. No cloud, no subscriptions.</sub><br />
-      <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever">Learn more →</a>
+    <td width="50%" valign="top" style="padding: 16px; border: 1px solid #30363d; border-radius: 8px;">
+      <h3 align="center">🎙️ Dictate</h3>
+      <p align="center">
+        <sub><i>Remote mic voice dictation — type on any Mac from any laptop on your LAN. Zero cloud, zero subscriptions.</i></sub>
+      </p>
+      <p align="center">
+        <img src="https://img.shields.io/badge/Flask-Python-000000?style=flat-square&logo=flask&logoColor=white" />
+        <img src="https://img.shields.io/badge/Whisper_AI-FF6B35?style=flat-square" />
+        <img src="https://img.shields.io/badge/Web_Audio_API-FF4500?style=flat-square&logo=webaudioapi&logoColor=white" />
+        <img src="https://img.shields.io/badge/2_sec_round_trip-00BFAE?style=flat-square" />
+      </p>
+      <p align="center">
+        <strong>⬇️ 1.6s paste</strong> · <strong>🎯 0.3s transcription</strong> · <strong>🚫 0s decode</strong><br />
+        <sub>(browser-side raw PCM eliminated ffmpeg — 12× speedup)</sub>
+      </p>
+      <p align="center">
+        <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever"><code>github.com/moviecolor/Remote-Mic-Dictation-Sever →</code></a>
+      </p>
     </td>
-    <td align="center" width="50%">
-      <strong>🎬 DIT Ungrade Tool</strong><br />
-      <sub>Reverse on-set grades back to camera LOG for portfolio comparison sliders. Supports Arri Alexa, Alexa 35, and Sony Venice.</sub><br />
-      <a href="https://github.com/moviecolor/ditungrade">Learn more →</a>
+    <td width="50%" valign="top" style="padding: 16px; border: 1px solid #30363d; border-radius: 8px;">
+      <h3 align="center">🎬 DIT Ungrade Tool</h3>
+      <p align="center">
+        <sub><i>Reverse on-set grades back to camera LOG for portfolio comparison sliders.</i></sub>
+      </p>
+      <p align="center">
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+        <img src="https://img.shields.io/badge/Colour_Science-FF6B35?style=flat-square" />
+        <img src="https://img.shields.io/badge/Arri-Sony-052FAD?style=flat-square" />
+        <img src="https://img.shields.io/badge/tkinter_GUI-00BFAE?style=flat-square" />
+      </p>
+      <p align="center">
+        <strong>🎯 Alexa</strong> · <strong>🎯 Alexa 35</strong> · <strong>🎯 Sony Venice</strong><br />
+        <sub>K1S1 LUT support for Alexa Classic ported from LogC</sub>
+      </p>
+      <p align="center">
+        <a href="https://github.com/moviecolor/ditungrade"><code>github.com/moviecolor/ditungrade →</code></a>
+      </p>
     </td>
   </tr>
 </table>

@@ -27,8 +27,21 @@
 - Top-level imports + model preload = stable launchd startup
 - Browser has native codecs = decode there, send raw
 
-### Next
+## Session 2026-06-24 — Lock & Polish (Phase 5 Complete)
+- ✅ Updated SESSION_HANDOFF.md with final git/backup status
+- ✅ Created session-log-2026-06-24.md comprehensive record
+- ✅ Cleaned backup dirs from monorepo root
+- ✅ Added .gitignore to monorepo root
+- ✅ Updated TRACKING.md with current state
+- ✅ Standalone repo README updated: raw PCM, 2s speed, new architecture
+- ✅ Portfolio page products section polished
+- ✅ Both repos committed + pushed
+- ✅ Local backup mirror created (12 files)
+
+### Next (for future sessions)
 - Name the app
 - Product description / target customer
-- Payments (Wise)
-- Screenshots/GIFs for READMEs
+- Payments (Wise) integration
+- Screenshots / demo GIFs for READMEs
+- Windows server (pywin32 clipboard variant)
+- ditungrade Phase 5 (drag-and-drop, window memory)

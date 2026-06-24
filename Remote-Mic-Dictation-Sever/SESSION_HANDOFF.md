@@ -96,7 +96,15 @@ After (raw PCM):    0.0s      0.3s      1.6s     1.9s
 | Field | Value |
 |-------|-------|
 | **Branch** | `main` |
-| **Working Tree** | Modified — speed overhaul in progress |
+| **Working Tree** | Clean ✅ — all changes committed |
+| **Last Commit (monorepo)** | `8cfbd72` — `github.com/moviecolor/moviecolor` |
+| **Last Commit (standalone)** | `0ce4d8a` — `github.com/moviecolor/Remote-Mic-Dictation-Sever` |
+
+## Backup
+
+| Field | Value |
+|-------|-------|
+| **Local mirror** | `Remote-Mic-Dictation-Sever_BACKUP_2026-06-24_v2/` (12 files) |
 
 ## Run Commands
 
