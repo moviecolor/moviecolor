@@ -17,6 +17,10 @@ PORT = 8765
 MODEL_SIZE = "base"
 AUDIO_FORMAT = (1, 2, 16000, 16000, 'NONE', 'NONE')  # 16-bit 16kHz mono WAV
 
+# Find project root (works regardless of working directory)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+CLIENT_DIR = PROJECT_ROOT / "client"
+
 app = flask.Flask(__name__)
 
 # ─── Whisper model (lazy load) ─────────────────────────────────────
@@ -104,7 +108,7 @@ def transcribe_audio(audio_bytes: bytes, filename: str = "audio.webm") -> str:
 # ─── Routes ─────────────────────────────────────────────────────────
 @app.route("/")
 def index():
-    with open("client/index.html") as f: return "<!DOCTYPE html>" + f.read()
+    with open(CLIENT_DIR / "index.html") as f: return "<!DOCTYPE html>" + f.read()
 
 @app.route("/transcribe", methods=["POST"])
 def transcribe():
