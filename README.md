@@ -107,6 +107,9 @@
       </p>
       <h3 align="center">ReMyk</h3>
       <p align="center">
+        <a href="ReMyk_demo.gif"><img src="ReMyk_demo.gif" width="90%" alt="ReMyk demo" /></a>
+      </p>
+      <p align="center">
         <sub><i>freeWispur, remote voice dictation</i></sub>
       </p>
       <p align="center">
