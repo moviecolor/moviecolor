@@ -102,19 +102,22 @@
 <table align="center" width="90%">
   <tr>
     <td width="50%" valign="top" style="padding: 16px; border: 1px solid #30363d; border-radius: 8px;">
-      <h3 align="center">🎙️ Dictate</h3>
       <p align="center">
-        <sub><i>Remote mic voice dictation — type on any Mac from any laptop on your LAN. Zero cloud, zero subscriptions.</i></sub>
+        <img src="https://raw.githubusercontent.com/moviecolor/Remote-Mic-Dictation-Sever/main/ReMyk_icon.svg" width="64" height="64" />
+      </p>
+      <h3 align="center">ReMyk</h3>
+      <p align="center">
+        <sub><i>freeWispur, remote voice dictation</i></sub>
       </p>
       <p align="center">
         <img src="https://img.shields.io/badge/Flask-Python-000000?style=flat-square&logo=flask&logoColor=white" />
         <img src="https://img.shields.io/badge/Whisper_AI-FF6B35?style=flat-square" />
-        <img src="https://img.shields.io/badge/Web_Audio_API-FF4500?style=flat-square&logo=webaudioapi&logoColor=white" />
+        <img src="https://img.shields.io/badge/Web_Audio_API-FF4500?style=flat-square" />
         <img src="https://img.shields.io/badge/2_sec_round_trip-00BFAE?style=flat-square" />
       </p>
       <p align="center">
-        <strong>⬇️ 1.6s paste</strong> · <strong>🎯 0.3s transcription</strong> · <strong>🚫 0s decode</strong><br />
-        <sub>(browser-side raw PCM eliminated ffmpeg — 12× speedup)</sub>
+        <strong>🎙️ laptop mic</strong> · <strong>📡 LAN relay</strong> · <strong>💻 Mac Studio</strong><br />
+        <sub>Browser-based — zero install, self-hosted, 2s round trip</sub>
       </p>
       <p align="center">
         <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever"><code>github.com/moviecolor/Remote-Mic-Dictation-Sever →</code></a>

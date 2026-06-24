@@ -1,6 +1,6 @@
 # TRACKING — Active Projects & State
 
-**Last Updated:** 2026-06-24 13:30
+**Last Updated:** 2026-06-24 14:00
 **Owner:** Ryan Wuckert (moviecolor)
 
 ## Active Repos
@@ -19,7 +19,8 @@
 - **Location:** ~/GitHub/ditungrade/ (standalone repo + subfolder in moviecolor/)
 - **Note:** Also exists as standalone repo at GitHub/_BACKUP_2026-06-15/ditungrade/
 
-### Dictate — Remote Mic Voice Dictation
+### ReMyk (formerly Dictate) — Remote Voice Dictation
+- **Product Name:** ReMyk (R-E-M-Y-K) — *freeWispur, remote voice dictation*
 - **Status:** Complete — 12x speed improvement (24s → ~2s round trip)
 - **Key fix:** Browser-side audio decode eliminated ffmpeg bottleneck entirely; server reads raw PCM directly
 - **Deployment:** Mac Studio via launchd (auto-start), CPU-only Whisper (~0.3s transcription), auto-paste via AppleScript

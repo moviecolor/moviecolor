@@ -27,7 +27,14 @@
 - Top-level imports + model preload = stable launchd startup
 - Browser has native codecs = decode there, send raw
 
-## Session 2026-06-24 — Lock & Polish (Phase 5 Complete)
+## Session 2026-06-24 — Branding & Polish (Phase 6 Complete)
+- ✅ Product named: **ReMyk** — *freeWispur, remote voice dictation*
+- ✅ Created ReMyk_icon.svg — white microphone logo on dark circle
+- ✅ Updated web UI: ReMyk brand + inline mic icon above mic button
+- ✅ Added "Made by Movie Color / Ryan Wuckert" footer to web UI
+- ✅ Updated portfolio README card: Dictate → ReMyk with icon
+- ✅ Updated standalone README with ReMyk branding
+- ✅ Updated TRACKING.md, progress.md
 - ✅ Updated SESSION_HANDOFF.md with final git/backup status
 - ✅ Created session-log-2026-06-24.md comprehensive record
 - ✅ Cleaned backup dirs from monorepo root

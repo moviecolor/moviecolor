@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dictate</title>
+<title>ReMyk — freeWispur Voice Dictation</title>
 <style>
 body { margin: 0; padding: 20px; background: linear-gradient(135deg, #1a0a2e 0%, #2d1b69 50%, #1a0a2e 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: -apple-system, system-ui, sans-serif; }
 .container { text-align: center; max-width: 500px; }
-.mic-btn { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #7c3aed; background: #1e0a3c; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(124,58,237,0.3); }
+.brand { margin-bottom: 12px; }
+.brand-icon { width: 28px; height: 28px; vertical-align: middle; margin-right: 6px; }
+.brand-name { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+.brand-tagline { font-size: 13px; color: #a78bfa; margin-top: 2px; }
+.mic-btn { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #7c3aed; background: #1e0a3c; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(124,58,237,0.3); }
 .mic-btn svg { width: 50px; height: 50px; fill: #a78bfa; }
 .mic-btn.recording { background: #e74c3c; border-color: #c0392b; animation: pulse 0.8s ease-in-out infinite alternate; }
 @keyframes pulse { from { box-shadow: 0 0 10px rgba(231,76,60,0.4); } to { box-shadow: 0 0 35px rgba(231,76,60,0.9); transform: scale(1.05); } }
@@ -19,18 +23,36 @@ body { margin: 0; padding: 20px; background: linear-gradient(135deg, #1a0a2e 0%,
 .copy-btn { background: #7c3aed; color: white; border: none; padding: 10px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 12px; transition: background 0.2s; }
 .copy-btn:hover { background: #8b5cf6; }
 .copy-btn:active { transform: scale(0.97); }
+.footer { margin-top: 30px; padding-top: 16px; border-top: 1px solid rgba(124,58,237,0.2); font-size: 11px; color: #5b4a82; }
+.footer a { color: #7c3aed; text-decoration: none; }
+.footer a:hover { color: #a78bfa; }
 </style>
 </head>
 <body>
 <div class="container">
+    <div class="brand">
+        <span class="brand-name">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+            ReMyk
+        </span>
+        <div class="brand-tagline">freeWispur · remote voice dictation</div>
+    </div>
     <div class="mic-btn" id="micBtn" onclick="toggle()">
         <svg viewBox="0 0 24 24"><path d="M12 14a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v4a4 4 0 0 0 4 4z"/><path d="M19 10a7 7 0 0 1-14 0H3a9 9 0 0 0 8 8.94V22h2v-3.06A9 9 0 0 0 21 10h-2z"/></svg>
     </div>
     <div class="status" id="status">Tap mic to dictate</div>
     <div class="result empty" id="result">Transcribed text appears here</div>
     <button class="copy-btn" id="copyBtn" onclick="copyText()" style="display:none">Copy &amp; close</button>
-    <div class="hint" id="hint">Click mic -> speak -> click again to transcribe</div>
+    <div class="hint" id="hint">Click mic → speak → click again to transcribe</div>
     <div class="focus-tip"><b>If text doesn't appear:</b> click your app, press Cmd+V. Or use the Copy button above.</div>
+    <div class="footer">
+        Made by <a href="https://github.com/moviecolor">Movie Color</a> / Ryan Wuckert
+    </div>
 </div>
 <script src="client.js"></script>
 </body>

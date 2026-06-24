@@ -1,4 +1,6 @@
-# Dictate — Remote Mic Voice Dictation
+# ReMyk — freeWispur, Remote Voice Dictation
+
+> **ReMyk** (R-E-M-Y-K) = *Remote* + *My* + *Mic* — use your laptop's microphone to type on any Mac on your network. Zero cloud, zero subscriptions, just Whisper AI on your own hardware.
 
 A self-hosted voice dictation tool that turns any Mac into a Bluetooth headset for remote work: use your laptop's microphone to type on a distant Mac Studio, entirely over WiFi.
 
