@@ -97,6 +97,33 @@
 </p>
 
 ---
+<h2 align="center">🛒 Apps I Built — Available Now</h2>
+
+<p align="center">
+  <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever">
+    <img src="https://img.shields.io/badge/Dictate-FF6B35?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://github.com/moviecolor/ditungrade">
+    <img src="https://img.shields.io/badge/DIT_Ungrade_Tool-00BFAE?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+</p>
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%">
+      <strong>🎙️ Dictate</strong><br />
+      <sub>Remote mic voice dictation — use your laptop's mic to type on any Mac on your network. No cloud, no subscriptions.</sub><br />
+      <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever">Learn more →</a>
+    </td>
+    <td align="center" width="50%">
+      <strong>🎬 DIT Ungrade Tool</strong><br />
+      <sub>Reverse on-set grades back to camera LOG for portfolio comparison sliders. Supports Arri Alexa, Alexa 35, and Sony Venice.</sub><br />
+      <a href="https://github.com/moviecolor/ditungrade">Learn more →</a>
+    </td>
+  </tr>
+</table>
+
+---
 ## 🧪 Proprietary IP: Air-Gapped Local AI Production Pipeline
 
 To ensure absolute data compliance for enterprise studios operating under strict NDAs, I engineer **100% offline, air-gapped automation pipelines** that process high-value visual assets locally without internet or cloud-API dependencies.
