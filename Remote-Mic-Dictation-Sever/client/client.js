@@ -1,4 +1,4 @@
-// Dictate Web Client — Record mic, decode to raw 16kHz PCM in-browser,
+// ReMyk Web Client — Record mic, decode to raw 16kHz PCM in-browser,
 // send to server for Whisper transcription. No ffmpeg needed on server.
 
 let mediaRecorder = null;
@@ -183,7 +183,7 @@ fetch("/status")
   .then((r) => r.json())
   .then((data) => {
     if (data.status === "ok") {
-      setStatus(`Connected to Dictate server (${data.model} model loaded)`);
+      setStatus(`Connected to ReMyk server (${data.model} model loaded)`);
     } else {
       setStatus("Connected — ready to record");
     }

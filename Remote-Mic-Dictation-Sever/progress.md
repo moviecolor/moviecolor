@@ -1,4 +1,4 @@
-# Progress — Dictate
+# Progress — ReMyk
 
 ## Session 2026-06-24 — Speed Optimization (Phase 2 Complete)
 **Status: Working 🟢 — ~2 second round trip**

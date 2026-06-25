@@ -6,7 +6,7 @@ A self-hosted voice dictation tool that turns any Mac into a Bluetooth headset f
 
 ## The Problem
 
-Mac Studios and Mac Minis have **no built-in microphone**. You can't dictate anything in Notes, Safari address bars, or third-party apps from across the desk. Dictate solves this by borrowing the mic from nearby laptops.
+Mac Studios and Mac Minis have **no built-in microphone**. You can't dictate anything in Notes, Safari address bars, or third-party apps from across the desk. ReMyk solves this by borrowing the mic from nearby laptops.
 
 ## How It Works
 
@@ -61,7 +61,7 @@ The server will pre-load the Whisper base model on startup and serve the web UI.
 
 This is designed as a **three-computer setup**:
 
-1. **Laptop #1** (e.g., MacBook Air) — Opens browser at the Dictate URL, provides the microphone source
+1. **Laptop #1** (e.g., MacBook Air) — Opens browser at the ReMyk URL, provides the microphone source
 2. **Mac Studio** (the "receiver") — Runs `listen.py`, receives audio via WebSocket, transcribes with Whisper, and pastes text into the active focused app  
 3. **Laptop #2** (e.g., MacBook Pro) — Used for browsing/research while dictating into the Mac Studio from Laptop #1
 
@@ -90,7 +90,7 @@ Make sure your Mac Studio's firewall allows incoming connections on port **8765*
 
 ### macOS Permissions
 
-Allow Dictate access to the microphone system-wide in **System Settings → Privacy & Security → Microphone**. Grant permission when prompted.
+Allow ReMyk access to the microphone system-wide in **System Settings → Privacy & Security → Microphone**. Grant permission when prompted.
 
 ## Architecture
 
@@ -100,7 +100,7 @@ Allow Dictate access to the microphone system-wide in **System Settings → Priv
 | Whisper AI (CPU) | Performs speech-to-text locally — ~0.3s per dictation clip |
 | Browser client (client.js) | Captures mic via `getUserMedia`, **decodes audio natively via Web Audio API**, sends raw 16kHz Int16 PCM |
 | Paste automation | Inline `osascript` keystroke — ~1.6s paste time |
-| launchd plist | Auto-starts server on login — `~/Library/LaunchAgents/com.dictate.server.plist` |
+| launchd plist | Auto-starts server on login — `~/Library/LaunchAgents/com.remyk.server.plist` |
 
 ## Security
 

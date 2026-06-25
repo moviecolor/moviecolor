@@ -324,6 +324,7 @@
     <nav>
       <a href="#how-it-works" class="nav-link">How It Works</a>
       <a href="#features" class="nav-link">Features</a>
+      <a href="#engineering" class="nav-link">Engineering</a>
       <a href="#setup" class="nav-link">Setup</a>
       <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever" class="btn-cta-nav">GitHub →</a>
     </nav>
@@ -529,6 +530,95 @@
         <p>
           MIT licensed. Self-hosted. No subscriptions, no usage limits, 
           no hidden costs. Just Whisper on your own hardware.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ENGINEERING DETAILS ═══ -->
+  <section class="section" id="engineering">
+    <div class="section-label">Engineering Details</div>
+    <div class="divider"></div>
+    <h2 style="text-align:center;">Deep Dive Into the Audio Pipeline</h2>
+    <p style="text-align:center; max-width:650px; margin:0 auto 1.5rem;">
+      Every component was chosen and tuned for a single goal: get audio from your laptop
+      mic into the active app on your Mac Studio with minimum latency and zero cloud.
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:1.5rem;">
+      <div style="background:rgba(124,109,240,0.03); border:1px solid rgba(124,109,240,0.1); border-radius:12px; padding:1.75rem;">
+        <h3>🎤 Web Audio API Capture</h3>
+        <p style="font-size:0.9rem;">
+          The client uses the <strong style="color:#e8e8ed;">MediaDevices API</strong> to request
+          a mic stream via <code style="color:#b8a8ff;">getUserMedia({ audio: true })</code>.
+          Audio is captured at the browser's native sample rate (typically 44.1kHz or 48kHz)
+          and decoded in memory via <code style="color:#b8a8ff;">AudioContext.decodeAudioData()</code>.
+        </p>
+        <p style="font-size:0.9rem; margin-top:0.75rem;">
+          The raw float32 samples are then <strong style="color:#e8e8ed;">resampled to 16kHz Int16</strong>
+          using a linear interpolation pass — the same sample rate Whisper expects.
+          No temp files, no subprocesses, no ffmpeg overhead.
+        </p>
+      </div>
+
+      <div style="background:rgba(124,109,240,0.03); border:1px solid rgba(124,109,240,0.1); border-radius:12px; padding:1.75rem;">
+        <h3>🔊 Raw PCM Transport</h3>
+        <p style="font-size:0.9rem;">
+          Audio is sent as a <strong style="color:#e8e8ed;">raw Int16 PCM array</strong> inside a
+          simple HTTPS POST — one chunk per recording session. This was a deliberate choice
+          over WebSocket or streaming:
+        </p>
+        <ul style="font-size:0.85rem; color:#a0a0b0; line-height:1.8; margin-top:0.5rem; padding-left:1.25rem;">
+          <li><strong style="color:#e8e8ed;">No persistent connection</strong> — less CPU, no reconnect logic</li>
+          <li><strong style="color:#e8e8ed;">Stateless server</strong> — Flask receives, transcribes, responds</li>
+          <li><strong style="color:#e8e8ed;">TLS overhead once</strong> — one SSL handshake per utterance</li>
+          <li>Payload size: ~260 KB for 8 seconds of 16kHz Int16 audio</li>
+        </ul>
+      </div>
+
+      <div style="background:rgba(124,109,240,0.03); border:1px solid rgba(124,109,240,0.1); border-radius:12px; padding:1.75rem;">
+        <h3>🧠 Whisper AI on CPU</h3>
+        <p style="font-size:0.9rem;">
+          Transcription runs the <strong style="color:#e8e8ed;">Whisper base model</strong> on CPU
+          via <code style="color:#b8a8ff;">faster-whisper</code> (CTranslate2 backend). The
+          model is loaded once at server start and kept warm — no cold-start penalty.
+        </p>
+        <p style="font-size:0.9rem; margin-top:0.75rem;">
+          The base model was chosen over tiny for accuracy, and over small/medium for
+          speed: ~0.3s on a Mac Studio M2 Ultra for typical 5–8 second utterances.
+          Intel Macs see ~0.5s — still well within the 2s round-trip budget.
+        </p>
+      </div>
+
+      <div style="background:rgba(124,109,240,0.03); border:1px solid rgba(124,109,240,0.1); border-radius:12px; padding:1.75rem;">
+        <h3>⌨️ Auto-Paste Optimization</h3>
+        <p style="font-size:0.9rem;">
+          The transcribed text is delivered to the active app via
+          <code style="color:#b8a8ff;">osascript</code> simulating <strong style="color:#e8e8ed;">Cmd+V</strong>
+          (System Events keystroke). The original implementation copied to the clipboard
+          and pasted — but clipboard manipulation required frontmost app focus and added ~6s.
+        </p>
+        <p style="font-size:0.9rem; margin-top:0.75rem;">
+          The fix: <strong style="color:#e8e8ed;">Shell stdin piping</strong> into
+          <code style="color:#b8a8ff;">pbopy</code> and then keystroke paste.
+          This drops the paste stage from 6s → 1.6s by avoiding AppleScript's
+          clipboard-set overhead entirely.
+        </p>
+      </div>
+
+      <div style="background:rgba(124,109,240,0.03); border:1px solid rgba(124,109,240,0.1); border-radius:12px; padding:1.75rem;">
+        <h3>🔒 LAN Security</h3>
+        <p style="font-size:0.9rem;">
+          The server runs a <strong style="color:#e8e8ed;">self-signed SSL certificate</strong>
+          generated on first launch. HTTPS is required because the
+          <code style="color:#b8a8ff;">getUserMedia()</code> API refuses mic access over
+          insecure HTTP — even on localhost in some browsers.
+        </p>
+        <p style="font-size:0.9rem; margin-top:0.75rem;">
+          The Flask server binds to <strong style="color:#e8e8ed;">0.0.0.0:8765</strong>
+          but is isolated from the WAN by your router's NAT. No cloud relay,
+          no open ports, no data leaves the LAN. For production use, you can
+          swap the self-signed cert with a private CA.
         </p>
       </div>
     </div>

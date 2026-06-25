@@ -1,4 +1,4 @@
-# Findings — Dictate Performance Analysis
+# Findings — ReMyk Performance Analysis
 
 ## Timing Baseline (2026-06-24, "1-10" test)
 ```

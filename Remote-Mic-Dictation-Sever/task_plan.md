@@ -1,7 +1,7 @@
-# Task Plan: Dictate Speed Optimization
+# Task Plan: ReMyk Speed Optimization
 
 ## Goal
-Reduce Dictate transcription round-trip time from ~20s to under 5s for 5-7 seconds of speech.
+Reduce ReMyk transcription round-trip time from ~20s to under 5s for 5-7 seconds of speech.
 
 ## Current Phase
 Phase 2

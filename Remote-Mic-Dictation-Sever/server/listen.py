@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Dictate Web — mic recording in browser, Whisper transcription, auto-paste.
+ReMyk — remote voice dictation over LAN. Browser mic → Whisper AI → auto-paste.
 Access from remote computer at http://mac-studio-ip:8765
 """
 
@@ -90,7 +90,7 @@ def transcribe_audio(audio_bytes: bytes) -> str:
     else:
         # ── Compressed format — convert via ffmpeg (legacy client) ──
         filename = "audio.webm"
-        tmp_dir = Path(tempfile.mkdtemp(prefix="dictate_"))
+        tmp_dir = Path(tempfile.mkdtemp(prefix="remyk_"))
         input_path = tmp_dir / filename
         wav_path = tmp_dir / "converted.wav"
 
@@ -212,10 +212,10 @@ def log_error():
 @app.route("/cert.pem")
 def download_cert():
     """Serve the SSL cert so the user can install it on remote machines."""
-    cert_dir = Path.home() / ".dictate-ssl"
+    cert_dir = Path.home() / ".remyk-ssl"
     cert_file = cert_dir / "cert.pem"
     if cert_file.exists():
-        return flask.send_file(str(cert_file), mimetype="application/x-pem-file", as_attachment=True, download_name="dictate-cert.pem")
+        return flask.send_file(str(cert_file), mimetype="application/x-pem-file", as_attachment=True, download_name="remyk-cert.pem")
     return {"error": "No cert found"}, 404
 
 # ─── HTML page (embedded template) ──────────────────────────────────
@@ -282,7 +282,7 @@ def generate_self_signed_cert(cert_dir: Path):
 if __name__ == "__main__":
     import ssl
 
-    print(f"🌐 Dictate Web Server", flush=True)
+    print(f"🌐 ReMyk Server", flush=True)
     print(f"   Open https://localhost:{PORT} on this Mac", flush=True)
     print(f"   Or from remote computer: https://10.0.0.164:{PORT}", flush=True)
     print(f"   (Your browser will warn about self-signed cert — click 'Show Details → Visit Website')", flush=True)
@@ -297,7 +297,7 @@ if __name__ == "__main__":
     print(flush=True)
 
     # Generate SSL cert and run HTTPS
-    cert_dir = Path.home() / ".dictate-ssl"
+    cert_dir = Path.home() / ".remyk-ssl"
     try:
         cert_file, key_file = generate_self_signed_cert(cert_dir)
         context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)

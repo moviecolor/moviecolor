@@ -1,6 +1,6 @@
 # Session Log — 2026-06-24
 
-## Dictate Speed Optimization — Final Session
+## ReMyk Speed Optimization — Final Session
 
 ### Duration
 2026-06-24 ~12:00 – ~13:30
@@ -41,7 +41,7 @@ The primary bottleneck was **ffmpeg audio decoding**. Every recording was sent a
 - Simplified AppleScript (`keystroke "v" using command down`) → 4x paste speedup
 
 ### Deployment
-- **Server:** Mac Studio via `~/Library/LaunchAgents/com.dictate.server.plist` — auto-starts on login
+- **Server:** Mac Studio via `~/Library/LaunchAgents/com.remyk.server.plist` — auto-starts on login
 - **Access:** `https://100.100.235.34:8765` (Tailscale) or `https://10.0.0.164:8765` (LAN)
 - **Client:** Any browser on same network, no install required
 
@@ -64,8 +64,8 @@ The primary bottleneck was **ffmpeg audio decoding**. Every recording was sent a
 - ✅ TRACKING.md updated
 
 ### Next Session Starting Points
-1. **Name the app** — choose a product name (currently "Dictate")
-2. **Portfolio page refinements** — add demo GIF of Dictate in action
+1. ~~**Name the app** — choose a product name (currently "Dictate")~~ ✅ Named "ReMyk"
+2. **Portfolio page refinements** — add demo GIF of ReMyk in action
 3. **Payments (Wise)** — monetization setup
 4. **Product description** — target customer, landing page copy
 5. **Windows server** — pywin32 clipboard variant of listen.py

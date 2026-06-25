@@ -1,6 +1,6 @@
-# Dictate — Session Handoff Doc
+# ReMyk (fka Dictate) — Session Handoff Doc
 
-> Project: **Dictate** | Voice dictation over LAN/internet via browser microphone → Whisper transcription → auto-paste on Mac Studio
+> Project: **ReMyk** | Remote voice dictation over LAN — browser mic → Whisper AI → auto-paste on Mac Studio
 
 ---
 
@@ -8,7 +8,7 @@
 
 | Field | Detail |
 |-------|--------|
-| **Project Name** | Dictate (Remote-Mic-Dictation-Sever) |
+| **Project Name** | ReMyk (Remote-Mic-Dictation-Sever) |
 | **Purpose** | Voice dictation — record mic in browser, transcribe via Whisper on a remote Mac Studio, auto-paste text into active app |
 | **Tech Stack** | Python 3 + Flask, OpenAI Whisper (base), Web Audio API (MediaRecorder), HTTPS with self-signed SSL cert |
 | **Standalone Repo** | `github.com/moviecolor/Remote-Mic-Dictation-Sever` |
