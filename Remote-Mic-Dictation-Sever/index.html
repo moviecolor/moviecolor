@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReMyk — freeWispur, Remote Voice Dictation</title>
+  <meta name="description" content="Self-hosted voice dictation for Mac Studio. Use your laptop mic to type on any Mac over WiFi — zero cloud, zero subscriptions, just Whisper AI on your own hardware.">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #0d0d12;
+      color: #e8e8ed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: #7c6df0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img, svg { max-width: 100%; display: block; }
+
+    /* ── Typography ── */
+    h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: 0.5em; }
+    h3 { font-size: 1.15rem; margin-bottom: 0.4em; }
+    p { margin-bottom: 1em; color: #a0a0b0; }
+    .section { padding: 5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+
+    /* ── Header ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 13, 18, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.75rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    header .logo {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-weight: 700; font-size: 1.1rem;
+      color: #c8b8ff;
+    }
+    header .logo img, header .logo svg { width: 24px; height: 24px; }
+    header nav { display: flex; gap: 1.5rem; align-items: center; }
+    header nav a { color: #888; font-size: 0.875rem; transition: color 0.2s; }
+    header nav a:hover { color: #fff; text-decoration: none; }
+    .btn-cta-nav {
+      background: linear-gradient(135deg, #7c6df0, #5b4ad0);
+      color: #fff !important; font-weight: 600;
+      padding: 0.45rem 1.25rem; border-radius: 6px; font-size: 0.85rem;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-cta-nav:hover { transform: scale(1.04); box-shadow: 0 4px 20px rgba(124, 109, 240, 0.35); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 6rem 1.5rem 3rem;
+      max-width: 1100px; margin: 0 auto;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(124, 109, 240, 0.12);
+      color: #b8a8ff;
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+      padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(124, 109, 240, 0.2);
+    }
+    .hero h1 {
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff 40%, #b8a8ff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero .subtitle {
+      font-size: 1.2rem; color: #888; max-width: 600px; margin: 0 auto 2rem;
+    }
+    .hero-demo {
+      width: 100%; max-width: 800px; margin: 2rem auto 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+      position: relative;
+    }
+    .hero-demo img, .hero-demo video {
+      width: 100%; height: auto;
+      display: block;
+    }
+    .hero-demo-label {
+      position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+      padding: 0.35rem 1rem; border-radius: 100px;
+      font-size: 0.75rem; color: #aaa; white-space: nowrap;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat .num {
+      font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, #7c6df0, #b8a8ff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.15rem; }
+
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, #7c6df0, #5b4ad0);
+      color: #fff; font-weight: 700; font-size: 1rem;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(124, 109, 240, 0.35); text-decoration: none; color: #fff; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.06);
+      color: #ccc; font-weight: 600; font-size: 1rem;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); text-decoration: none; color: #fff; }
+
+    /* ── Problem ── */
+    .problem {
+      text-align: center;
+      padding-top: 2rem;
+    }
+    .problem p { max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
+    .problem .pain-quote {
+      font-style: italic; color: #888;
+      border-left: 3px solid rgba(124, 109, 240, 0.3);
+      padding-left: 1.5rem; margin: 2rem auto; max-width: 650px;
+      text-align: left; font-size: 1rem;
+    }
+
+    /* ── How It Works Diagram ── */
+    .flow-diagram {
+      background: rgba(124, 109, 240, 0.03);
+      border: 1px solid rgba(124, 109, 240, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2.5rem auto;
+      max-width: 900px;
+      text-align: center;
+    }
+    .flow-diagram .flow-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .flow-diagram .flow-step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      min-width: 140px;
+    }
+    .flow-diagram .flow-step .step-title { font-weight: 600; font-size: 0.85rem; }
+    .flow-diagram .flow-step .step-detail { font-size: 0.75rem; color: #888; margin-top: 0.25rem; }
+    .flow-diagram .flow-arrow { color: #555; font-size: 1.5rem; }
+    .flow-diagram .flow-result {
+      margin-top: 1.5rem;
+      background: rgba(124, 109, 240, 0.08);
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      display: inline-block;
+      font-weight: 600;
+      color: #b8a8ff;
+    }
+
+    /* ── Features ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 2rem;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 1.75rem;
+    }
+    .feature-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .feature-card h3 { font-size: 1.05rem; }
+    .feature-card p { font-size: 0.9rem; margin-bottom: 0; }
+
+    /* ── Performance Table ── */
+    .perf-table {
+      width: 100%; max-width: 600px; margin: 1.5rem auto 0;
+      border-collapse: collapse;
+    }
+    .perf-table th, .perf-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .perf-table th {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+      color: #666; font-weight: 600;
+    }
+    .perf-table td { font-size: 0.9rem; }
+    .perf-table .num-before { color: #ff6b6b; font-weight: 600; }
+    .perf-table .num-after { color: #51cf66; font-weight: 600; }
+
+    /* ── Setup ── */
+    .setup-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; margin-top: 2rem; counter-reset: setup-step;
+    }
+    .setup-step {
+      counter-increment: setup-step;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 1.75rem;
+      position: relative;
+    }
+    .setup-step::before {
+      content: counter(setup-step);
+      position: absolute; top: 1rem; right: 1rem;
+      font-size: 2.5rem; font-weight: 800;
+      color: rgba(124, 109, 240, 0.08);
+      line-height: 1;
+    }
+    .setup-step h3 { font-size: 1rem; }
+    .setup-step p { font-size: 0.9rem; margin-bottom: 0; }
+    .setup-step code {
+      background: rgba(255,255,255,0.06);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.8rem;
+      color: #b8a8ff;
+    }
+
+    /* ── Tech Specs ── */
+    .tech-specs {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .tech-spec {
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px; padding: 1rem 1.25rem;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .tech-spec .spec-label { color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .tech-spec .spec-value { font-weight: 600; margin-top: 0.15rem; }
+
+    /* ── CTA ── */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(124, 109, 240, 0.06), rgba(91, 74, 208, 0.04));
+      border: 1px solid rgba(124, 109, 240, 0.15);
+      border-radius: 16px; padding: 3rem 2rem;
+      text-align: center; max-width: 600px; margin: 2rem auto 0;
+    }
+    .cta-box .license-type {
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.3rem 0.75rem; border-radius: 6px;
+      font-size: 0.75rem; color: #aaa; margin-bottom: 1rem;
+    }
+    .cta-box .price {
+      font-size: 2.5rem; font-weight: 800;
+      background: linear-gradient(135deg, #7c6df0, #b8a8ff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .cta-box .price-note { color: #888; font-size: 0.9rem; margin-top: 0.25rem; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: #555; font-size: 0.85rem;
+    }
+    footer a { color: #777; }
+
+    /* ── Dividers ── */
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, #7c6df0, #b8a8ff);
+      border-radius: 2px; margin: 0 auto 1.5rem;
+    }
+    .section-label {
+      text-align: center; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: #555; margin-bottom: 0.5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .section { padding: 3rem 1.25rem; }
+      .hero { padding: 5rem 1.25rem 2rem; }
+      header nav .nav-link { display: none; }
+      .hero-demo-label { font-size: 0.65rem; padding: 0.25rem 0.75rem; }
+      .flow-diagram .flow-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#c8b8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+      ReMyk
+    </div>
+    <nav>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#setup" class="nav-link">Setup</a>
+      <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever" class="btn-cta-nav">GitHub →</a>
+    </nav>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="top">
+    <span class="hero-tag">🔊 freeWispur · Remote Voice Dictation</span>
+    <h1>Type on Any Mac<br>With Your Laptop Mic</h1>
+    <p class="subtitle">
+      Your Mac Studio has no microphone. Your laptop does. 
+      ReMyk bridges them — speak into your laptop, text appears on your Mac. 
+      All local, all yours.
+    </p>
+    <div class="hero-demo">
+      <img src="ReMyk_demo.gif" alt="ReMyk demo — voice dictation over LAN" loading="eager">
+      <span class="hero-demo-label">▶  Demo — 12 seconds</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">~2s</div>
+        <div class="label">Round Trip</div>
+      </div>
+      <div class="stat">
+        <div class="num">12×</div>
+        <div class="label">Faster than before</div>
+      </div>
+      <div class="stat">
+        <div class="num">0$</div>
+        <div class="label">No Cloud, No Subs</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        View on GitHub
+      </a>
+      <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever#quick-start" class="btn-secondary">
+        Get Started →
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ PROBLEM ═══ -->
+  <section class="section problem">
+    <p>
+      Mac Studios and Mac Minis are powerful machines — but they have 
+      <strong>no built-in microphone</strong>. You can't dictate in Notes, 
+      Slack, or any app without plugging in a headset or walking across the room.
+    </p>
+    <div class="pain-quote">
+      "I have a three-computer setup. My Mac Studio runs everything, but every
+      time I needed to type something, I had to stop what I was doing. 
+      I just wanted to speak and have the text show up."
+    </div>
+    <p>
+      <strong>ReMyk</strong> solves this by borrowing the mic from a nearby laptop.
+      Speak into your laptop's browser, and the text auto-pastes into the 
+      active app on your Mac Studio. Over WiFi. In about 2 seconds.
+    </p>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="section" id="how-it-works">
+    <div class="section-label">Architecture</div>
+    <div class="divider"></div>
+    <h2 style="text-align:center;">The Data Flow</h2>
+    <p style="text-align:center; max-width:600px; margin:0 auto;">
+      Every piece stays on your network. No cloud, no subscriptions, no data leaving your LAN.
+    </p>
+
+    <div class="flow-diagram">
+      <div class="flow-row">
+        <div class="flow-step">
+          <div class="step-title">🎤 Laptop Browser</div>
+          <div class="step-detail">MediaDevices API captures mic</div>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">
+          <div class="step-title">🔊 Web Audio Decode</div>
+          <div class="step-detail">decodeAudioData() → 16kHz PCM</div>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">
+          <div class="step-title">📡 HTTPS POST</div>
+          <div class="step-detail">Raw Int16 PCM to Mac Studio</div>
+        </div>
+      </div>
+      <div class="flow-row" style="margin-top:1rem;">
+        <div class="flow-step">
+          <div class="step-title">🧠 Whisper AI</div>
+          <div class="step-detail">CPU transcription ~0.3s</div>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">
+          <div class="step-title">⌨️ Auto-Paste</div>
+          <div class="step-detail">osascript Cmd+V ~1.6s</div>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">
+          <div class="step-title">✅ Active App</div>
+          <div class="step-detail">Text appears in Notes, Slack, etc.</div>
+        </div>
+      </div>
+      <div class="flow-result">
+        ⏱ Total Round Trip: ~2 seconds
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PERFORMANCE ═══ -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-label">Performance</div>
+    <div class="divider"></div>
+    <h2 style="text-align:center;">12× Speed Improvement</h2>
+    <p style="text-align:center; max-width:500px; margin:0 auto 1rem;">
+      The bottleneck was ffmpeg audio decoding. Moving decode to the browser
+      eliminated it entirely.
+    </p>
+    <div style="overflow-x:auto;">
+      <table class="perf-table">
+        <thead>
+          <tr><th>Stage</th><th>Before</th><th>After</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Audio Decode</td>
+            <td class="num-before">8–9s</td>
+            <td class="num-after">0.0s</td>
+          </tr>
+          <tr>
+            <td>Whisper Transcription</td>
+            <td class="num-before">0.3s</td>
+            <td class="num-after">0.3s</td>
+          </tr>
+          <tr>
+            <td>Auto-Paste (AppleScript)</td>
+            <td class="num-before">6.0s</td>
+            <td class="num-after">1.6s</td>
+          </tr>
+          <tr style="border-top: 2px solid rgba(124,109,240,0.2);">
+            <td><strong>Total Round Trip</strong></td>
+            <td class="num-before"><strong>~24s</strong></td>
+            <td class="num-after"><strong>~2s</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section class="section" id="features">
+    <div class="section-label">Features</div>
+    <div class="divider"></div>
+    <h2 style="text-align:center;">Built for the Three-Computer Workflow</h2>
+    <p style="text-align:center; max-width:600px; margin:0 auto 1rem;">
+      Laptop #1 provides the mic. Mac Studio runs the server. Laptop #2 stays free for research.
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Zero Cloud</h3>
+        <p>
+          Everything runs on your hardware. Whisper AI on the Mac Studio, 
+          mic capture in the browser. No data ever leaves your LAN.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>~2 Second Round Trip</h3>
+        <p>
+          Browser-native audio decode + CPU Whisper + optimized AppleScript. 
+          12× faster than the legacy ffmpeg path.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Browser-Based Client</h3>
+        <p>
+          No app install on the client. Open any browser on the LAN, 
+          tap the mic button, and speak. Works on any OS.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Auto-Start via launchd</h3>
+        <p>
+          Server starts on login automatically. Never think about it again — 
+          just open the URL and dictate.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔊</div>
+        <h3>Raw PCM Transport</h3>
+        <p>
+          Audio is decoded and resampled in the browser via Web Audio API, 
+          then sent as raw Int16 PCM. No temp files, no ffmpeg, no subprocesses.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Free &amp; Open Source</h3>
+        <p>
+          MIT licensed. Self-hosted. No subscriptions, no usage limits, 
+          no hidden costs. Just Whisper on your own hardware.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SETUP ═══ -->
+  <section class="section" id="setup">
+    <div class="section-label">Getting Started</div>
+    <div class="divider"></div>
+    <h2 style="text-align:center;">Up and Running in 2 Minutes</h2>
+    <p style="text-align:center; max-width:500px; margin:0 auto 1rem;">
+      One command on your Mac Studio. One URL in your browser.
+    </p>
+    <div class="setup-steps">
+      <div class="setup-step">
+        <h3>Install Dependencies</h3>
+        <p>On your Mac Studio: <code>pip install -r requirements.txt</code></p>
+      </div>
+      <div class="setup-step">
+        <h3>Start the Server</h3>
+        <p>Run <code>python server/listen.py</code> — it pre-loads Whisper and starts on port 8765.</p>
+      </div>
+      <div class="setup-step">
+        <h3>Open the URL</h3>
+        <p>From any laptop: <code>https://&lt;mac-studio-ip&gt;:8765</code></p>
+      </div>
+      <div class="setup-step">
+        <h3>Speak</h3>
+        <p>Tap the mic, speak, tap again. Text auto-pastes into the active app on the Mac.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever#quick-start" class="btn-primary">
+        Full Setup Guide →
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ TECH SPECS ═══ -->
+  <section class="section" id="tech">
+    <div class="section-label">Technical</div>
+    <div class="divider"></div>
+    <h2 style="text-align:center;">Stack &amp; Specs</h2>
+    <div class="tech-specs">
+      <div class="tech-spec">
+        <div class="spec-label">Server</div>
+        <div class="spec-value">Flask (Python 3.11+)</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-label">Transcription</div>
+        <div class="spec-value">OpenAI Whisper (base, CPU)</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-label">Client</div>
+        <div class="spec-value">MediaDevices + Web Audio API</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-label">Transport</div>
+        <div class="spec-value">HTTPS raw Int16 PCM POST</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-label">Paste Method</div>
+        <div class="spec-value">osascript keystroke (Cmd+V)</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-label">Auto-Start</div>
+        <div class="spec-value">launchd plist (login)</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-label">Security</div>
+        <div class="spec-value">Self-signed SSL, LAN-only</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-label">License</div>
+        <div class="spec-value">MIT — free forever</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="section" id="get-started">
+    <div class="section-label">Get Started</div>
+    <div class="divider"></div>
+    <div class="cta-box">
+      <div class="license-type">📜 MIT License — Free &amp; Open Source</div>
+      <div class="price">$0</div>
+      <div class="price-note">Self-hosted · No subscriptions · No limits</div>
+      <p style="text-align:center; margin: 1.5rem 0 0; color: #a0a0b0;">
+        ReMyk is free software. Clone the repo, install the dependencies, 
+        and you're dictating in two minutes. Contributions welcome.
+      </p>
+      <div style="margin-top: 1.5rem;">
+        <a href="https://github.com/moviecolor/Remote-Mic-Dictation-Sever" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Get ReMyk on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <p>
+      Built by <strong>Ryan Wuckert</strong> — DIT / AI Pipeline Architect<br>
+      <a href="https://github.com/moviecolor">github.com/moviecolor</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/ryan-w-wuckert-58121034/">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.imdb.com/name/nm2344474/">IMDb</a>
+    </p>
+    <p style="margin-top: 0.75rem; color: #444;">
+      © 2026 Movie Color. Made with 🎤 for the DIT community.
+    </p>
+  </footer>
+
+</body>
+</html>
