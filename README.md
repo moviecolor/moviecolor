@@ -75,6 +75,7 @@
   <img src="https://img.shields.io/badge/NBC-0080C6?style=for-the-badge&logo=nbc&logoColor=white" />
   <img src="https://img.shields.io/badge/CBS-000000?style=for-the-badge&logo=cbs&logoColor=white" />
   <img src="https://img.shields.io/badge/Technicolor-FC4C02?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Company_3-8B5CF6?style=for-the-badge&logoColor=white" />
 </p>
 
 <table align="center">
