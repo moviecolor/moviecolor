@@ -1,15 +1,15 @@
 <p align="center">
   <a href="https://moviecolor.github.io">
-    <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=32&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&random=false&width=600&height=70&lines=AI+Workflow+Consultant+%F0%9F%9A%80;ComfyUI+%26+Image+Pipeline+Specialist+%F0%9F%A7%A9;B2B+Remote+AI+Consultant+%F0%9F%A4%9D;17+Yrs+Film+%E2%86%92+AI+Pipeline+Architect+%F0%9F%8E%AC%E2%86%92%F0%9F%A4%96" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=32&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&random=false&width=600&height=70&lines=AI+Workflow+Consultant;ComfyUI+%26+Image+Pipeline+Specialist;B2B+Remote+AI+Consultant;17+Yrs+Film+%E2%86%92+AI+Pipeline+Architect" alt="Typing SVG" />
   </a>
 </p>
 
-<p align="center">🧪 Proprietary IP: Air-Gapped Local AI Production Pipeline</p>
+<p align="center">Proprietary IP: Air-Gapped Local AI Production Pipeline</p>
 
 ---
 
 <div align="center">
-  <h3>📜 Coursera Credentials</h3>
+  <h3>Coursera Credentials</h3>
   <br />
 
 <a href="https://coursera.org/share/01b5ad399a9f9e5441f36e47927b5fd2"><img src="https://img.shields.io/badge/GenAI_for_Software_Dev-IBM-052FAD?style=flat-square&logo=ibm&logoColor=white" /></a>&nbsp;
@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://moviecolor.github.io">
-    <img src="https://custom-icon-badges.demolab.com/badge/-PORTFOLIO-00f0ff?style=for-the-badge&logo=rocket&logoColor=black" />
+    <img src="https://custom-icon-badges.demolab.com/badge/-PORTFOLIO-00a8b2?style=for-the-badge&logo=rocket&logoColor=black" />
   </a>
   <a href="https://www.linkedin.com/in/ryan-w-wuckert-58121034/">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
@@ -33,7 +33,7 @@
 </p>
 
 ---
-<h2 align="center">🛠️ AI Workflow Stack</h2>
+<h2 align="center">AI Workflow Stack</h2>
 
 <p align="center">
   <!-- AI Image/Video -->
@@ -65,7 +65,7 @@
 </p>
 
 ---
-<h2 align="center">🎥 Selected Film Credits</h2>
+<h2 align="center">Selected Film Credits</h2>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Universal_Pictures-000000?style=for-the-badge&logo=universal&logoColor=white" />
@@ -97,7 +97,7 @@
 </p>
 
 ---
-<h2 align="center">🛒 Apps I Built — Available Now</h2>
+<h2 align="center">Apps I Built — Available Now</h2>
 
 <table align="center" width="90%">
   <tr>
@@ -119,7 +119,7 @@
         <img src="https://img.shields.io/badge/2_sec_round_trip-00BFAE?style=flat-square" />
       </p>
       <p align="center">
-        <strong>🎙️ laptop mic</strong> · <strong>📡 LAN relay</strong> · <strong>💻 Mac Studio</strong><br />
+        <strong>laptop mic</strong> · <strong>LAN relay</strong> · <strong>Mac Studio</strong><br />
         <sub>Browser-based — zero install, self-hosted, 2s round trip</sub>
       </p>
       <p align="center">
@@ -127,7 +127,7 @@
       </p>
     </td>
     <td width="50%" valign="top" style="padding: 16px; border: 1px solid #30363d; border-radius: 8px;">
-      <h3 align="center">🎬 DIT Ungrade Tool</h3>
+      <h3 align="center">DIT Ungrade Tool</h3>
       <p align="center">
         <a href="ditungrade_demo.gif"><img src="ditungrade_demo.gif" width="100%" alt="DIT Ungrade Tool demo" /></a>
       </p>
@@ -141,7 +141,7 @@
         <img src="https://img.shields.io/badge/tkinter_GUI-00BFAE?style=flat-square" />
       </p>
       <p align="center">
-        <strong>🎯 Alexa</strong> · <strong>🎯 Alexa 35</strong> · <strong>🎯 Sony Venice</strong><br />
+        <strong>Alexa</strong> · <strong>Alexa 35</strong> · <strong>Sony Venice</strong><br />
         <sub>K1S1 LUT support for Alexa Classic ported from LogC</sub>
       </p>
       <p align="center">
@@ -152,11 +152,11 @@
 </table>
 
 ---
-## 🧪 Proprietary IP: Air-Gapped Local AI Production Pipeline
+## Proprietary IP: Air-Gapped Local AI Production Pipeline
 
 To ensure absolute data compliance for enterprise studios operating under strict NDAs, I engineer **100% offline, air-gapped automation pipelines** that process high-value visual assets locally without internet or cloud-API dependencies.
 
-### 🎯 Production Pipeline Capabilities
+### Production Pipeline Capabilities
 
 | Modality | Capabilities |
 |----------|-------------|
@@ -172,7 +172,7 @@ To ensure absolute data compliance for enterprise studios operating under strict
 | **LoRA Training** | Local LoRA creation and fine-tuning for custom characters and styles |
 | **Scene Manipulation** | Character replacement, background replacement, lighting alteration, compositing — via SAIL2, Bernini, LTX 2.3, Bindweave, Sulphur2 |
 
-### 🔧 Highlighted Model Stack & Tooling
+### Highlighted Model Stack & Tooling
 
 **Image Backbone:**
 - **10Eros v1** (FLUX-based, 43 GB) — primary image backbone, custom fine-tuned for all character/genre work
@@ -201,7 +201,7 @@ To ensure absolute data compliance for enterprise studios operating under strict
 - **ControlNet Union** — combined pose/depth/Canny conditioning for intentional composition and frame-consistent output.
 - **Qwen3-TTS Voice Pipeline** — clone a voice from a short sample, generate speech, save voice profiles, run multi-character dialogues — fully local, no cloud API.
 
-### 🔗 How They Connect
+### How They Connect
 
 ```
 Voice Sample ──► Qwen3-TTS Clone ──► Wan Multitalk ──► Talking Head Video
@@ -211,7 +211,7 @@ Character Sheet ──► Prompt Relay ──► LTX / Wan Timeline ──┘
 ControlNets ───────────────────────────────────────────────┘──► Pose / Composition Control
 ```
 
-### ⚡ Hardware Scale & Compute Performance
+### Hardware Scale & Compute Performance
 
 | Workstation | Role | Specs |
 |------------|------|-------|
@@ -222,7 +222,7 @@ ControlNets ──────────────────────�
 - **Zero-Trust Security Loop:** Hardcoded to execute on isolated local host loops (`http://127.0.0.1:8188`). Absolutely no telemetry data, client visual payloads, or proprietary training assets cross external network boundaries.
 
 <details>
-<summary><strong>📋 Full Workstation Spec Sheet</strong></summary>
+<summary><strong>Full Workstation Spec Sheet</strong></summary>
 
 | Component | Specification |
 |-----------|--------------|
@@ -248,14 +248,13 @@ ControlNets ──────────────────────�
 
 ---
 <h2 align="center">
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand%20Light%20Skin%20Tone.png" width="30" height="30" /> 
   I help teams turn AI image tools into reliable, production-ready workflows.
 </h2>
 
 <table align="center">
   <tr>
     <td width="60%" valign="top">
-      <h3>🎬 17 Years on Set → 🤖 AI Pipeline Architect</h3>
+      <h3>17 Years on Set → AI Pipeline Architect</h3>
       <p>
         After nearly two decades managing complex image pipelines on major film sets 
         for <strong>Universal Pictures, Netflix, Amazon, Sony, NBC, CBS, Technicolor, and Deluxe</strong> — 
@@ -267,8 +266,8 @@ ControlNets ──────────────────────�
         scale in the real world.
       </p>
       <p>
-        📍 <em>São Paulo, Brazil / Manitoba, Canada</em><br />
-        🤝 <em>Direct hire or B2B — flexible terms</em>
+        <em>São Paulo, Brazil / Manitoba, Canada</em><br />
+        <em>Direct hire or B2B — flexible terms</em>
       </p>
     </td>
     <td width="40%" align="center">
@@ -278,27 +277,23 @@ ControlNets ──────────────────────�
 </table>
 
 ---
-<h2 align="center">🚀 What I Do</h2>
+<h2 align="center">What I Do</h2>
 
 <table align="center">
   <tr>
     <td align="center" width="25%">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Artist%20Palette.png" width="40" /><br />
       <strong>ComfyUI Workflows</strong><br />
       <sub>Custom node development, pipeline automation, production-ready image/video generation</sub>
     </td>
     <td align="center" width="25%">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gear.png" width="40" /><br />
       <strong>Pipeline Optimization</strong><br />
       <sub>From prompt to output — optimizing for speed, quality, and reliability at scale</sub>
     </td>
     <td align="center" width="25%">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Clapper%20Board.png" width="40" /><br />
       <strong>AI Film Services</strong><br />
       <sub>AI colorization, restoration, image-to-video, voice synthesis for production</sub>
     </td>
     <td align="center" width="25%">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" width="40" /><br />
       <strong>B2B Consulting</strong><br />
       <sub>Workflow design, technical advising, remote team integration</sub>
     </td>
@@ -331,5 +326,5 @@ ControlNets ──────────────────────�
 </p>
 
 <p align="center">
-  <sub>🎬 Crafted with 17 years of cinema pipeline expertise + a dash of AI magic ✨</sub>
+  <sub>Crafted with 17 years of cinema pipeline expertise + a dash of AI magic</sub>
 </p>
