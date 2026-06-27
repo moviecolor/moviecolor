@@ -130,7 +130,7 @@
     <td width="50%" valign="top" style="padding: 16px; border: 1px solid #30363d; border-radius: 8px;">
       <h3 align="center">DIT Ungrade Tool</h3>
       <p align="center">
-        <a href="ditungrade_demo.gif"><img src="ditungrade_demo.gif" width="100%" alt="DIT Ungrade Tool demo" /></a>
+        <a href="ditungrade_demo.gif"><img src="ditungrade_icon.jpg" width="100%" alt="DIT Ungrade Tool demo" /></a>
       </p>
       <p align="center">
         <sub><i>Reverse on-set grades back to camera LOG for portfolio comparison sliders.</i></sub>
@@ -254,7 +254,7 @@ ControlNets ──────────────────────�
 
 <table align="center">
   <tr>
-    <td width="60%" valign="top">
+    <td width="100%" valign="top">
       <h3>17 Years on Set → AI Pipeline Architect</h3>
       <p>
         After nearly two decades managing complex image pipelines on major film sets 
@@ -271,9 +271,7 @@ ControlNets ──────────────────────�
         <em>Direct hire or B2B — flexible terms</em>
       </p>
     </td>
-    <td width="40%" align="center">
-      <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,3,6,12&height=200&section=header&text=Movie%20Color&fontSize=60&fontColor=fff&animation=fadeIn" />
-    </td>
+
   </tr>
 </table>
 
@@ -310,7 +308,7 @@ ControlNets ──────────────────────�
 
 <p align="center">
   <a href="https://moviecolor.github.io">
-    <img src="https://img.shields.io/badge/Portfolio-00f0ff?style=for-the-badge&logo=astro&logoColor=black" />
+    <img src="https://img.shields.io/badge/Portfolio-00a8b2?style=for-the-badge&logo=astro&logoColor=black" />
   </a>
   <a href="https://www.linkedin.com/in/ryan-w-wuckert-58121034/">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
