@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://moviecolor.github.io">
+  <a href="https://ai-consulting-movie-color.netlify.app">
     <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=32&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&random=false&width=600&height=70&lines=AI+Workflow+Consultant;ComfyUI+%26+Image+Pipeline+Specialist;B2B+Remote+AI+Consultant;17+Yrs+Film+%E2%86%92+AI+Pipeline+Architect" alt="Typing SVG" />
   </a>
 </p>
@@ -18,7 +18,7 @@
 </div>
 
 <p align="center">
-  <a href="https://moviecolor.github.io">
+  <a href="https://ai-consulting-movie-color.netlify.app">
     <img src="https://custom-icon-badges.demolab.com/badge/-PORTFOLIO-00a8b2?style=for-the-badge&logo=rocket&logoColor=black" />
   </a>
   <a href="https://www.linkedin.com/in/ryan-w-wuckert-58121034/">
@@ -307,7 +307,7 @@ ControlNets ──────────────────────�
 </p>
 
 <p align="center">
-  <a href="https://moviecolor.github.io">
+  <a href="https://ai-consulting-movie-color.netlify.app">
     <img src="https://img.shields.io/badge/Portfolio-00a8b2?style=for-the-badge&logo=astro&logoColor=black" />
   </a>
   <a href="https://www.linkedin.com/in/ryan-w-wuckert-58121034/">
