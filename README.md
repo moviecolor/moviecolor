@@ -27,7 +27,7 @@
   <a href="https://www.imdb.com/name/nm2344474/">
     <img src="https://img.shields.io/badge/IMDb-F5C518?style=for-the-badge&logo=imdb&logoColor=black" />
   </a>
-  <a href="mailto:your@email.com">
+  <a href="mailto:ryanwuckert@gmail.com">
     <img src="https://img.shields.io/badge/Contact-FF6B35?style=for-the-badge&logo=maildotru&logoColor=white" />
   </a>
 </p>
@@ -319,7 +319,7 @@ ControlNets ──────────────────────�
   <a href="https://facebook.com/MovieColor">
     <img src="https://img.shields.io/badge/Facebook_Movie_Color-1877F2?style=for-the-badge&logo=facebook&logoColor=white" />
   </a>
-  <a href="mailto:your@email.com">
+  <a href="mailto:ryanwuckert@gmail.com">
     <img src="https://img.shields.io/badge/Email-FF6B35?style=for-the-badge&logo=maildotru&logoColor=white" />
   </a>
 </p>
